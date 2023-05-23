@@ -58,5 +58,8 @@ return require('packer').startup(function(use)
 
 	-- use 'nvim-tree/nvim-web-devicons'
 	-- use {'romgrk/barbar.nvim', requires = 'nvim-web-devicons'}
+	--
+
+	use 'rstacruz/vim-closer'
 
 end)
