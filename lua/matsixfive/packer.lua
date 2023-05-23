@@ -62,4 +62,9 @@ return require('packer').startup(function(use)
 
 	use 'rstacruz/vim-closer'
 
+	use {
+		'nvim-lualine/lualine.nvim',
+		requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+	}
+
 end)
