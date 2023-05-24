@@ -5,7 +5,7 @@ vim.cmd.packadd('packer.nvim')
 
 return require('packer').startup(function(use)
 	-- Packer can manage itself
-	use 'wbthomason/packer.nvim'
+	use {'wbthomason/packer.nvim', run = ':PackerSync'}
 
 	use {
 		'nvim-telescope/telescope.nvim', tag = '0.1.0',
@@ -59,7 +59,9 @@ return require('packer').startup(function(use)
 	-- use 'nvim-tree/nvim-web-devicons'
 	-- use {'romgrk/barbar.nvim', requires = 'nvim-web-devicons'}
 
-	use 'Konfekt/vim-CtrlXA'
+	-- use 'Konfekt/vim-CtrlXA'
+
+	use 'nishigori/increment-activator'
 
 	use 'rstacruz/vim-closer'
 
