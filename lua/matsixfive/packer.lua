@@ -13,12 +13,12 @@ return require('packer').startup(function(use)
 		requires = { {'nvim-lua/plenary.nvim'} }
 	}
 	-- commenter
-	use {
-		'numToStr/Comment.nvim',
-		config = function()
-			require('Comment').setup()
-		end
-	}
+	-- use {
+	-- 	'numToStr/Comment.nvim',
+	-- 	config = function()
+	-- 		require('Comment').setup()
+	-- 	end
+	-- }
 
 	use {
 		'VonHeikemen/lsp-zero.nvim',
@@ -41,7 +41,7 @@ return require('packer').startup(function(use)
 		}
 	}
 
-
+	use 'echasnovski/mini.nvim'
 
 	use 'folke/tokyonight.nvim'
 	-- vim.cmd[[colorscheme tokyonight]]
