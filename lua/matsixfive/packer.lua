@@ -46,6 +46,8 @@ return require('packer').startup(function(use)
 	use 'folke/tokyonight.nvim'
 	-- vim.cmd[[colorscheme tokyonight]]
 
+	use 'stevearc/oil.nvim'
+
 	use	 {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
 
 	use 'mbbill/undotree'
