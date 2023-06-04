@@ -22,3 +22,5 @@ vim.opt.updatetime = 50
 vim.colorcolumn = "80"
 
 vim.g.mapleader = " "
+
+-- vim.api.nvim_command('set fillchars=eob:~')

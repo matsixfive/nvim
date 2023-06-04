@@ -9,16 +9,8 @@ return require('packer').startup(function(use)
 
 	use {
 		'nvim-telescope/telescope.nvim', tag = '0.1.0',
-		-- or                            , branch = '0.1.x',
 		requires = { {'nvim-lua/plenary.nvim'} }
 	}
-	-- commenter
-	-- use {
-	-- 	'numToStr/Comment.nvim',
-	-- 	config = function()
-	-- 		require('Comment').setup()
-	-- 	end
-	-- }
 
 	use {
 		'VonHeikemen/lsp-zero.nvim',
@@ -43,8 +35,13 @@ return require('packer').startup(function(use)
 
 	use 'echasnovski/mini.nvim'
 
-	use 'folke/tokyonight.nvim'
-	-- vim.cmd[[colorscheme tokyonight]]
+	-- use 'folke/tokyonight.nvim'
+	use {
+		"loctvl842/monokai-pro.nvim",
+		config = function()
+			require("monokai-pro").setup()
+		end
+	}
 
 	use 'stevearc/oil.nvim'
 
@@ -58,10 +55,8 @@ return require('packer').startup(function(use)
 
 	use 'mhartington/formatter.nvim'
 
-	-- use 'nvim-tree/nvim-web-devicons'
+	use 'nvim-tree/nvim-web-devicons'
 	-- use {'romgrk/barbar.nvim', requires = 'nvim-web-devicons'}
-
-	-- use 'Konfekt/vim-CtrlXA'
 
 	use 'nishigori/increment-activator'
 

@@ -1,5 +1,0 @@
--- require('Comment').setup({
---
--- 	ignore = '^$'
---
--- })
