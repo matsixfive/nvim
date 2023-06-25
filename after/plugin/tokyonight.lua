@@ -10,7 +10,7 @@ require("tokyonight").setup({
 		colors.bg = '#231f20'
 		colors.bg_dark = '#110f10'
 		colors.bg_float = '#2d2929'
-		colors.bg_visual = '#383435'
+		colors.bg_visual = '#423d3f'
 		colors.bg_statusline = colors.bg_visual
 		colors.bg_highlight = '#2a2525'
 
