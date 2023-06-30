@@ -11,7 +11,7 @@ require("tokyonight").setup({
 		colors.bg_dark = '#110f10'
 		colors.bg_float = '#2d2929'
 		colors.bg_visual = '#423d3f'
-		colors.bg_statusline = colors.bg_visual
+		colors.bg_statusline = "#383435"
 		colors.bg_highlight = '#2a2525'
 
 		colors.fg = '#fbf7d6'
@@ -28,8 +28,15 @@ require("tokyonight").setup({
 
 		colors.gitSigns = {
 			add = '#0ab04d',
-			change = colors.fg,
+			change = colors.orange,
 			delete = colors.red
+		}
+
+		colors.diff = {
+			add = "#26482a",
+			text = "#b9572a",
+			change = "#633323",
+			delete = "#642225"
 		}
 
 		colors.comment = '#848174'
@@ -39,12 +46,14 @@ require("tokyonight").setup({
 		highlights["@punctuation.bracket"] = {
 			fg = colors.blue
 		}
-		-- highlights["@punctuation.delimeter"] = {
-		-- 	fg = colors.blue
-		-- }
+
 		highlights.DiagnosticVirtualTextWarn = {
 			bg = colors.bg_float,
 			fg = colors.orange
+		}
+
+		highlights.VertSplit = {
+			fg = colors.bg_highlight
 		}
 	end
 })
