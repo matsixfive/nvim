@@ -25,6 +25,8 @@ return require('packer').startup(
 			requires = { {'nvim-lua/plenary.nvim'} }
 		}
 
+		use 'nvim-telescope/telescope-media-files.nvim'
+
 		use {
 			'VonHeikemen/lsp-zero.nvim',
 			branch = 'v2.x',
@@ -55,6 +57,8 @@ return require('packer').startup(
 	--			require("monokai-pro").setup()
 		--	end
 		--}
+
+		use 'lewis6991/gitsigns.nvim'
 
 		use 'stevearc/oil.nvim'
 

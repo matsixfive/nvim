@@ -7,10 +7,12 @@ vim.keymap.set('n', '<C-p>', builtin.git_files, {})
 vim.keymap.set('n', '<leader>ps', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>vh', builtin.help_tags, {})
 
+require('telescope').load_extension('media_files')
+
 -- change mappings
 require('telescope').setup({
 	defaults = {
-		dynamic_preview_title = true,
+		danamic_preview_title = true,
 		mappings = {
 			i = {
 				["<C-j>"] = require('telescope.actions').move_selection_next,
@@ -19,3 +21,4 @@ require('telescope').setup({
 		},
 	},
 })
+

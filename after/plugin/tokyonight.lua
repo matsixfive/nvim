@@ -15,7 +15,7 @@ require("tokyonight").setup({
 		colors.bg_highlight = '#2a2525'
 
 		colors.fg = '#fbf7d6'
-		colors.fg_gutter = '#45433d'
+		colors.fg_gutter = '#4f494c'
 
 		colors.green = '#addb67'
 		colors.green1 = colors.fg
