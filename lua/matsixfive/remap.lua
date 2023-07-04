@@ -7,8 +7,8 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 
 -- move to start and end of line
-vim.keymap.set("n", "H", "^")
-vim.keymap.set("n", "L", "$")
+-- vim.keymap.set("n", "H", "^")
+-- vim.keymap.set("n", "L", "$")
 
 -- move line below to end of line
 vim.keymap.set("n", "J", "mzJ`z")
