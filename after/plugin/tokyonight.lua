@@ -69,6 +69,18 @@ vim.opt.fillchars = {
 	eob = " ",
 }
 
+vim.opt.listchars = {
+	tab = "┊ ",
+	nbsp = "˽",
+	-- space = "⋅",
+	-- eol = "↴",
+	-- trail = "·",
+	-- extends = "❯",
+	-- precedes = "❮",
+}
+
+vim.opt.list = true
+
 local diagnosticIcons = {
 	DefaultOutline = " ",
 	ErrorOutline = " ",
@@ -89,6 +101,7 @@ vim.diagnostic.config({
 		prefix = "",
 		suffix = " ",
 		format = function(diagnostic)
+			diagnostic.message = diagnostic.message:gsub("\n", " ⏎ ")
 			if diagnostic.message == "Undefined global `vim`." then
 				return " Your life is nothing, you serve zero purpose, you should kill yourself NOW, and give somebody else a piece of that oxygen in the ozone layer that's covered up so we can breathe inside of this blue trapped bubble. Like what are you even here for? To worship me? Kill yourself. and I mean that with a hundred percent, with a thousand percent."
 			end
@@ -108,21 +121,3 @@ vim.diagnostic.config({
 		end,
 	},
 })
-
--- local signs = { Error = " ", Warning = " ", Hint = " ", Information = " " }
--- for type, icon in pairs(signs) do
---   local hl = "LspDiagnosticsSign" .. type
---   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
--- end
-
--- local function lspSymbol(name, icon)
--- vim.fn.sign_define(
--- 	'DiagnosticSign' .. name,
--- 	{ text = icon, numhl = 'DiagnosticDefault' .. name }
--- )
--- end
--- lspSymbol('Error', '')
--- lspSymbol('Information', '')
--- lspSymbol('Hint', '')
--- lspSymbol('Info', '')
--- lspSymbol('Warning', '')
