@@ -1,13 +1,13 @@
 -- This file can be loaded by calling `lua require('plugins')` from your init.vim
 local ensure_packer = function()
-  local fn = vim.fn
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-  if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-    vim.cmd [[packadd packer.nvim]]
-    return true
-  end
-  return false
+	local fn = vim.fn
+	local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+	if fn.empty(fn.glob(install_path)) > 0 then
+		fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
+		vim.cmd [[packadd packer.nvim]]
+		return true
+	end
+	return false
 end
 
 local packer_bootstrap = ensure_packer()
@@ -18,31 +18,33 @@ local packer_bootstrap = ensure_packer()
 return require('packer').startup(
 	function(use)
 		-- Packer can manage itself
-		use {'wbthomason/packer.nvim', run = ':PackerSync'}
+		use { 'wbthomason/packer.nvim', run = ':PackerSync' }
 
 		use {
 			'nvim-telescope/telescope.nvim', tag = '0.1.0',
-			requires = { {'nvim-lua/plenary.nvim'} }
+			requires = { { 'nvim-lua/plenary.nvim' } }
 		}
+
+		use 'nvim-telescope/telescope-media-files.nvim'
 
 		use {
 			'VonHeikemen/lsp-zero.nvim',
 			branch = 'v2.x',
 			requires = {
 				-- LSP Support
-				{'neovim/nvim-lspconfig'},             -- Required
-				{                                      -- Optional
+				{ 'neovim/nvim-lspconfig' }, -- Required
+				{
 					'williamboman/mason.nvim',
 					run = function()
 						pcall(vim.cmd, 'MasonUpdate')
 					end,
 				},
-				{'williamboman/mason-lspconfig.nvim'}, -- Optional
+				{ 'williamboman/mason-lspconfig.nvim' }, -- Optional
 
 				-- Autocompletion
-				{'hrsh7th/nvim-cmp'},     -- Required
-				{'hrsh7th/cmp-nvim-lsp'}, -- Required
-				{'L3MON4D3/LuaSnip'},     -- Required
+				{ 'hrsh7th/nvim-cmp' }, -- Required
+				{ 'hrsh7th/cmp-nvim-lsp' }, -- Required
+				{ 'L3MON4D3/LuaSnip' }, -- Required
 			}
 		}
 
@@ -52,25 +54,42 @@ return require('packer').startup(
 		-- use {
 		--	"loctvl842/monokai-pro.nvim",
 		--	config = function()
-	--			require("monokai-pro").setup()
+		--			require("monokai-pro").setup()
 		--	end
 		--}
 
+		use 'lewis6991/gitsigns.nvim'
+
+		use({
+			"glepnir/lspsaga.nvim",
+			opt = true,
+			branch = "main",
+			event = "LspAttach",
+			config = function()
+				require("lspsaga").setup({})
+			end,
+			requires = {
+				{"nvim-tree/nvim-web-devicons"},
+				--Please make sure you install markdown and markdown_inline parser
+				{"nvim-treesitter/nvim-treesitter"}
+			}
+		})
+
 		use 'stevearc/oil.nvim'
 
-		use	 {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
+		use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
 		use 'mbbill/undotree'
 
-		use {'github/copilot.vim', branch = 'release' }
+		use { 'github/copilot.vim', branch = 'release' }
 
 		use 'xiyaowong/transparent.nvim'
-
-		use 'mhartington/formatter.nvim'
 
 		-- use {'romgrk/barbar.nvim', requires = 'nvim-web-devicons'}
 
 		use 'nishigori/increment-activator'
+
+		use 'nvim-telescope/telescope-ui-select.nvim'
 
 		use 'rstacruz/vim-closer'
 
