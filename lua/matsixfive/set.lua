@@ -8,7 +8,8 @@ vim.optexpandtab = false
 
 vim.opt.swapfile = false
 vim.opt.backup = false
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.undodir = vim.loop.os_homedir() .. "/.vim/undodir"
+print(vim.loop.os_homedir())
 vim.opt.undofile = true
 
 vim.opt.hlsearch = false
@@ -20,5 +21,3 @@ vim.opt.scrolloff = 8
 vim.opt.updatetime = 50
 
 vim.colorcolumn = "80"
-
-vim.g.mapleader = " "
