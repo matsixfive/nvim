@@ -74,7 +74,7 @@ return require('packer').startup(
 
 		use 'nishigori/increment-activator'
 
-		use 'nvim-telescope/telescope-ui-select.nvim'
+		-- use 'nvim-telescope/telescope-ui-select.nvim'
 
 		use 'rstacruz/vim-closer'
 
