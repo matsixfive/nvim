@@ -9,7 +9,6 @@ vim.optexpandtab = false
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undodir = vim.loop.os_homedir() .. "/.vim/undodir"
-print(vim.loop.os_homedir())
 vim.opt.undofile = true
 
 vim.opt.hlsearch = false
