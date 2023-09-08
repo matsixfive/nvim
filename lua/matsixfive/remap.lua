@@ -17,6 +17,9 @@ vim.keymap.set("n", "J", "mzJ`z")
 -- vim.keymap.set("v", "p", "P")
 -- vim.keymap.set("v", "P", "p")
 
+-- select last edited text
+vim.keymap.set("n", "gV", "`[v`]")
+
 -- stay centred
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
