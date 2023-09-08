@@ -17,7 +17,6 @@ local packer_bootstrap = ensure_packer()
 
 return require('packer').startup(
 	function(use)
-		-- Packer can manage itself
 		use { 'wbthomason/packer.nvim', run = ':PackerSync' }
 
 		use {
@@ -25,8 +24,8 @@ return require('packer').startup(
 			requires = { { 'nvim-lua/plenary.nvim' } }
 		}
 
-		use 'nvim-telescope/telescope-media-files.nvim'
-
+		-- *********** LSP ************
+		use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 		use {
 			'VonHeikemen/lsp-zero.nvim',
 			branch = 'v2.x',
@@ -48,36 +47,28 @@ return require('packer').startup(
 			}
 		}
 
+
+		-- *********** Misc ***********
 		use 'echasnovski/mini.nvim'
-
-		use 'folke/tokyonight.nvim'
-		-- use {
-		--	"loctvl842/monokai-pro.nvim",
-		--	config = function()
-		--			require("monokai-pro").setup()
-		--	end
-		--}
-
-		use 'lewis6991/gitsigns.nvim'
-
 		use 'stevearc/oil.nvim'
-
-		use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-
 		use 'mbbill/undotree'
 
+
+		-- ********* Editing **********
 		use { 'github/copilot.vim', branch = 'release' }
-
-		use 'xiyaowong/transparent.nvim'
-
-		-- use {'romgrk/barbar.nvim', requires = 'nvim-web-devicons'}
-
 		use 'nishigori/increment-activator'
-
-		-- use 'nvim-telescope/telescope-ui-select.nvim'
-
 		use 'rstacruz/vim-closer'
+		use {
+			'numToStr/Comment.nvim',
+			config = function()
+				require('Comment').setup()
+			end
+		}
 
+		-- ************ UI ************
+		use 'lewis6991/gitsigns.nvim'
+		use 'xiyaowong/transparent.nvim'
+		use 'nvim-tree/nvim-web-devicons'
 		use {
 			"norcalli/nvim-colorizer.lua",
 			cmd = "ColorizerToggle",
@@ -85,13 +76,17 @@ return require('packer').startup(
 				require("colorizer").setup()
 			end,
 		}
-
 		use {
 			'nvim-lualine/lualine.nvim',
 			requires = { 'nvim-tree/nvim-web-devicons', opt = true }
 		}
-
-		use 'nvim-tree/nvim-web-devicons'
+		use 'folke/tokyonight.nvim'
+		-- use {
+		--	"loctvl842/monokai-pro.nvim",
+		--	config = function()
+		--			require("monokai-pro").setup()
+		--	end
+		--}
 
 		if packer_bootstrap then
 			require('packer').sync()

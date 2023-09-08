@@ -15,9 +15,6 @@ vim.keymap.set('n', '<C-p>',
 	end, {}
 )
 
-require('telescope').load_extension('media_files')
--- require('telescope').load_extension('ui-select')
-
 -- change mappings
 require('telescope').setup({
 	defaults = {
