@@ -47,7 +47,6 @@ function(use)
 		}
 	}
 
-
 	-- *********** Misc ***********
 	use 'echasnovski/mini.nvim'
 	use 'stevearc/oil.nvim'
@@ -62,8 +61,46 @@ function(use)
 		'numToStr/Comment.nvim',
 		config = function()
 			require('Comment').setup()
-		end
+		end,
 	}
+	use 'echasnovski/mini.nvim'
+
+	use 'folke/tokyonight.nvim'
+
+	use 'lewis6991/gitsigns.nvim'
+
+	use 'stevearc/oil.nvim'
+
+	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+
+	use 'mbbill/undotree'
+
+	use { 'github/copilot.vim', branch = 'release' }
+
+	use 'xiyaowong/transparent.nvim'
+
+	-- use {'romgrk/barbar.nvim', requires = 'nvim-web-devicons'}
+
+	use 'nishigori/increment-activator'
+
+	use 'nvim-telescope/telescope-ui-select.nvim'
+
+	use 'rstacruz/vim-closer'
+
+	use {
+		"norcalli/nvim-colorizer.lua",
+		cmd = "ColorizerToggle",
+		config = function()
+			require("colorizer").setup()
+		end,
+	}
+
+	use {
+		'nvim-lualine/lualine.nvim',
+		requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+	}
+
+	use 'nvim-tree/nvim-web-devicons'
 
 	-- ************ UI ************
 	use 'lewis6991/gitsigns.nvim'
@@ -73,6 +110,7 @@ function(use)
 			require('gitsigns').setup()
 		end,
 	}
+
 	use {
 		"norcalli/nvim-colorizer.lua",
 		cmd = "ColorizerToggle",
@@ -85,12 +123,6 @@ function(use)
 		requires = { 'nvim-tree/nvim-web-devicons', opt = true }
 	}
 	use 'folke/tokyonight.nvim'
-	-- use {
-	--	"loctvl842/monokai-pro.nvim",
-	--	config = function()
-	--			require("monokai-pro").setup()
-	--	end
-	--}
 
 	if packer_bootstrap then
 		require('packer').sync()
