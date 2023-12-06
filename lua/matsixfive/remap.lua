@@ -20,6 +20,9 @@ vim.keymap.set("n", "J", "mzJ`z")
 -- select last edited text
 vim.keymap.set("n", "gV", "`[v`]")
 
+-- make variable on current line mut (rust)
+-- vim.keymap.set("n", "<leader>m", "mm0:s/let \\(mut\\)\\@!/&mut /<CR>:noh<CR>`m4l")
+
 -- stay centred
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
@@ -48,3 +51,20 @@ vim.keymap.set("v", "<leader>c", ":'<,'>w !clip.exe<CR><CR>", { silent = true })
 vim.keymap.set("i", "<C-c>", "<Esc>", { silent = true })
 
 vim.keymap.set("n", "Q", "<nop>")
+
+-- toggle mut keyword in rust
+function ToggleMut()
+    local line = vim.fn.getline('.')
+		local line_num = vim.fn.line('.')
+    local mut = string.find(line, 'mut')
+
+    if mut then
+			local replaced = string.gsub(line, ' mut ', ' ')
+			vim.fn.setline(line_num, replaced)
+    else
+			local replaced = string.gsub(line, 'let ', 'let mut ')
+			vim.fn.setline(line_num, replaced)
+    end
+end
+
+vim.api.nvim_set_keymap('n', '<leader>m', [[:lua ToggleMut()<CR>]], { noremap = true, silent = true })
