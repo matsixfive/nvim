@@ -48,6 +48,10 @@ vim.keymap.set("v", "<leader>c", ":'<,'>w !clip.exe<CR><CR>", { silent = true })
 -- 	print(vim.fn.system("echo '" .. reg:gsub('"', '\\"') .. "' | clip.exe"))
 -- end)
 
+vim.keymap.set("n", "<TAB>", ":bnext<CR>")
+vim.keymap.set("n", "<S-TAB>", ":bprev<CR>")
+
+
 vim.keymap.set("i", "<C-c>", "<Esc>", { silent = true })
 
 vim.keymap.set("n", "Q", "<nop>")
