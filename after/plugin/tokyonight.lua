@@ -48,12 +48,16 @@ require("tokyonight").setup({
 			fg = colors.blue
 		}
 
-		highlights.DiagnosticVirtualTextWarn = {
+		highlights["ColorColumn"] = {
+			bg = colors.bg_highlight
+		}
+
+		highlights["DiagnosticVirtualTextWarn"]= {
 			bg = colors.bg_float,
 			fg = colors.orange
 		}
 
-		highlights.VertSplit = {
+		highlights["VertSplit"] = {
 			fg = colors.bg_highlight
 		}
 	end
@@ -74,12 +78,15 @@ vim.opt.listchars = {
 	nbsp = "˽",
 	-- space = "⋅",
 	-- eol = "↴",
-	-- trail = "·",
+	trail = "·",
 	-- extends = "❯",
 	-- precedes = "❮",
+	extends = "…",
+	precedes = "…",
 }
 
 vim.opt.list = true
+
 
 local diagnosticIcons = {
 	DefaultOutline = " ",
@@ -93,6 +100,17 @@ local diagnosticIcons = {
 	Hint = " ",
 	Info = " ",
 }
+
+-- -- wrong code for e.g
+-- o = vim.o
+-- local thing = l
+-- l
+
+for _, name in ipairs({"Error", "Warn", "Hint", "Info"}) do
+	local hl = "DiagnosticSign" .. name
+	local icon = diagnosticIcons[name]
+	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+end
 
 vim.diagnostic.config({
 	virtual_text = {
