@@ -60,8 +60,9 @@ require('lazy').setup({
 	-- ************ UI ************
 	'nvim-telescope/telescope.nvim',
 	'stevearc/oil.nvim',
-	'rktjmp/lush.nvim',
-	'folke/tokyonight.nvim',
+	-- 'rktjmp/lush.nvim',
+	-- 'folke/tokyonight.nvim',
+	'navarasu/onedark.nvim',
 	'nvim-tree/nvim-web-devicons',
 	'nvim-telescope/telescope-ui-select.nvim',
 	{ 'lewis6991/gitsigns.nvim', config = true },
@@ -69,4 +70,5 @@ require('lazy').setup({
 		'nvim-lualine/lualine.nvim',
 		dependencies = { 'nvim-tree/nvim-web-devicons', lazy = true }
 	},
+	{ 'AndreM222/copilot-lualine' },
 })
