@@ -52,6 +52,11 @@ require("tokyonight").setup({
 			bg = colors.bg_highlight
 		}
 
+		highlights["CursorLineNr"] = {
+			bg = colors.bg_highlight,
+			fg = colors.fg_gutter
+		}
+
 		highlights["DiagnosticVirtualTextWarn"]= {
 			bg = colors.bg_float,
 			fg = colors.orange
@@ -64,6 +69,8 @@ require("tokyonight").setup({
 })
 
 vim.cmd [[colorscheme tokyonight]]
+
+vim.opt.cursorline = true
 
 vim.opt.fillchars = {
 	vert = "‖",

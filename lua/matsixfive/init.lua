@@ -1,17 +1,21 @@
 require("matsixfive.remap")
--- require("matsixfive.lazynvim")
 require("matsixfive.set")
+
+
+----------
+-- LAZY --
+----------
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
+	})
 end
 vim.opt.rtp:prepend(lazypath)
 
@@ -25,8 +29,7 @@ require('lazy').setup({
 	{ 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
 
 	-- ********* Editing **********
-	{ 'github/copilot.vim', branch = 'release' },
-	{ 'numToStr/Comment.nvim', config = true },
+	{ 'numToStr/Comment.nvim',           config = true },
 	'nishigori/increment-activator',
 	'rstacruz/vim-closer',
 
@@ -46,19 +49,22 @@ require('lazy').setup({
 			'williamboman/mason-lspconfig.nvim', -- Optional
 
 			-- Autocompletion
-			'hrsh7th/nvim-cmp', -- Required
+			'hrsh7th/nvim-cmp',  -- Required
 			'hrsh7th/cmp-nvim-lsp', -- Required
-			'L3MON4D3/LuaSnip', -- Required
+			'L3MON4D3/LuaSnip',  -- Required
 		}
 	},
+	-- { 'github/copilot.vim',              branch = 'release' },
+	{ 'zbirenbaum/copilot.lua',  event = 'InsertEnter' },
 
 	-- ************ UI ************
 	'nvim-telescope/telescope.nvim',
 	'stevearc/oil.nvim',
+	'rktjmp/lush.nvim',
 	'folke/tokyonight.nvim',
 	'nvim-tree/nvim-web-devicons',
 	'nvim-telescope/telescope-ui-select.nvim',
-	{	'lewis6991/gitsigns.nvim', config = true },
+	{ 'lewis6991/gitsigns.nvim', config = true },
 	{
 		'nvim-lualine/lualine.nvim',
 		dependencies = { 'nvim-tree/nvim-web-devicons', lazy = true }
