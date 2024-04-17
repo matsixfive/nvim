@@ -1,12 +1,13 @@
 require('oil').setup({
 	columns = {
+		-- "permissions",
 		"icon",
 	},
 	use_default_keymaps = false,
 	keymaps = {
 		["g?"] = "actions.show_help",
 		["<CR>"] = "actions.select",
-		["<C-s>"] = "actions.select_vsplit",
+		-- ["<C-s>"] = "actions.select_vsplit",
 		-- ["<C-h>"] = "actions.select_split",
 		-- ["<C-t>"] = "actions.select_tab",
 		-- ["<C-p>"] = "actions.preview",
@@ -18,6 +19,9 @@ require('oil').setup({
 	},
 	view_options = {
 		show_hidden = true,
+		-- is_always_hidden = function(name, bufnr)
+		-- 	return name == ".."
+		-- end,
 	}
 })
 

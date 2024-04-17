@@ -1,5 +1,6 @@
 require("matsixfive.remap")
 require("matsixfive.set")
+require("matsixfive.theme")
 
 
 ----------
@@ -32,6 +33,12 @@ require('lazy').setup({
 	{ 'numToStr/Comment.nvim',           config = true },
 	'nishigori/increment-activator',
 	'rstacruz/vim-closer',
+	{
+		"danymat/neogen",
+		config = true,
+		-- Uncomment next line if you want to follow only stable versions
+		version = "*"
+	},
 
 	-- ********** LSP *************
 	{
@@ -54,14 +61,18 @@ require('lazy').setup({
 			'L3MON4D3/LuaSnip',  -- Required
 		}
 	},
+
+	-- ********** Copilot *********
 	-- { 'github/copilot.vim',              branch = 'release' },
-	{ 'zbirenbaum/copilot.lua',  event = 'InsertEnter' },
+	-- { 'zbirenbaum/copilot.lua',  event = 'InsertEnter' },
+	-- { 'AndreM222/copilot-lualine' },
 
 	-- ************ UI ************
 	'nvim-telescope/telescope.nvim',
 	'stevearc/oil.nvim',
 	-- 'rktjmp/lush.nvim',
-	-- 'folke/tokyonight.nvim',
+	'folke/tokyonight.nvim',
+	'startup-nvim/startup.nvim',
 	'navarasu/onedark.nvim',
 	'nvim-tree/nvim-web-devicons',
 	'nvim-telescope/telescope-ui-select.nvim',
@@ -70,5 +81,4 @@ require('lazy').setup({
 		'nvim-lualine/lualine.nvim',
 		dependencies = { 'nvim-tree/nvim-web-devicons', lazy = true }
 	},
-	{ 'AndreM222/copilot-lualine' },
 })

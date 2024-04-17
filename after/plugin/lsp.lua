@@ -6,7 +6,7 @@ lsp.on_attach(function(client, bufnr)
 	vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
 	vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
 
-	vim.keymap.set("n", "<leader>gq", function() vim.lsp.buf.format() end, opts)
+	vim.keymap.set("n", "<leader>ff", function() vim.lsp.buf.format() end, opts)
 	vim.keymap.set("n", "<leader>rn", function() vim.lsp.buf.rename() end, opts)
 	vim.keymap.set("n", "<leader>ca", function() vim.lsp.buf.code_action() end, opts)
 end)
@@ -24,7 +24,7 @@ cmp_mappings['<Tab>'] = nil
 cmp_mappings['<S-Tab>'] = nil
 
 lsp.setup_nvim_cmp({
-	mapping = cmp_mappings
+	mapping = cmp_mappings,
 })
 
 vim.keymap.set("n", "<leader>dd", function() vim.diagnostic.open_float() end, opts)
