@@ -25,10 +25,6 @@ vim.opt.listchars = {
 
 vim.opt.list = true
 
-function test()
-	
-end
-
 local diagnosticIcons = {
 	DefaultOutline = " ",
 	ErrorOutline = " ",
