@@ -55,19 +55,20 @@ require('lazy').setup({
 
 	-- ********** Copilot *********
 	-- { 'github/copilot.vim',              branch = 'release' },
-	{ 'zbirenbaum/copilot.lua',  event = 'InsertEnter' },
+	{ 'zbirenbaum/copilot.lua',   event = 'InsertEnter' },
 	{ 'AndreM222/copilot-lualine' },
 
 	-- ************ UI ************
 	'nvim-telescope/telescope.nvim',
 	'stevearc/oil.nvim',
+	{ "refractalize/oil-git-status.nvim", dependencies = { "stevearc/oil.nvim", }, },
 	-- 'rktjmp/lush.nvim',
 	'folke/tokyonight.nvim',
 	'startup-nvim/startup.nvim',
 	'navarasu/onedark.nvim',
 	'nvim-tree/nvim-web-devicons',
 	'nvim-telescope/telescope-ui-select.nvim',
-	{ 'lewis6991/gitsigns.nvim', config = true },
+	{ 'lewis6991/gitsigns.nvim',          config = true },
 	{
 		'nvim-lualine/lualine.nvim',
 		dependencies = { 'nvim-tree/nvim-web-devicons', lazy = true }

@@ -22,7 +22,16 @@ require('oil').setup({
 		-- is_always_hidden = function(name, bufnr)
 		-- 	return name == ".."
 		-- end,
-	}
+	},
+
+	-- oil-git-status.nvim options
+	win_options = {
+		signcolumn = "yes:2",
+	},
 })
 
 vim.keymap.set("n", "-", require("oil").open, { desc = "Open parent directory" })
+
+require('oil-git-status').setup({
+  show_ignored = true -- show files that match gitignore with !!
+})
