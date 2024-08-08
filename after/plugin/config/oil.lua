@@ -26,7 +26,7 @@ require('oil').setup({
 
 	-- oil-git-status.nvim options
 	win_options = {
-		signcolumn = "yes:2",
+		signcolumn = "yes:1",
 	},
 })
 
