@@ -22,9 +22,3 @@ vim.opt.showmode = false
 vim.opt.scrolloff = 8
 
 vim.opt.updatetime = 50
-
-vim.filetype.add({
-	extension = {
-		mdx = "mdx"
-	}
-})

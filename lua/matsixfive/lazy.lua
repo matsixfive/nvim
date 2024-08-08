@@ -55,8 +55,8 @@ require('lazy').setup({
 
 	-- ********** Copilot *********
 	-- { 'github/copilot.vim',              branch = 'release' },
-	-- { 'zbirenbaum/copilot.lua',  event = 'InsertEnter' },
-	-- { 'AndreM222/copilot-lualine' },
+	{ 'zbirenbaum/copilot.lua',  event = 'InsertEnter' },
+	{ 'AndreM222/copilot-lualine' },
 
 	-- ************ UI ************
 	'nvim-telescope/telescope.nvim',
