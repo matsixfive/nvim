@@ -21,7 +21,7 @@ require('lazy').setup({
 	{ 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
 
 	-- ********* Editing **********
-	{ 'numToStr/Comment.nvim',           config = true },
+	{ 'numToStr/Comment.nvim', config = true },
 	'nishigori/increment-activator',
 	'rstacruz/vim-closer',
 	{
