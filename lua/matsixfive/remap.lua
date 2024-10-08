@@ -39,18 +39,10 @@ vim.keymap.set("i", "<C-c>", "<Esc>", { silent = true })
 
 vim.keymap.set("n", "Q", "<nop>")
 
--- -- toggle mut keyword in rust
--- vim.keymap.set('n', '<leader>m',
--- function()
--- 	local line = vim.fn.getline('.')
--- 	local line_num = vim.fn.line('.')
--- 	local mut = string.find(line, 'let mut ')
---
--- 	if mut then
--- 		local new = line:gsub('let mut ', 'let ')
--- 		vim.fn.setline(line_num, new)
--- 	else
--- 		local new = line:gsub('let ', 'let mut ')
--- 		vim.fn.setline(line_num, new)
--- 	end
--- end, {})
+vim.keymap.set("n", "<leader>ga",
+	function()
+		-- add current file to git
+		vim.cmd("silent !git add %")
+		vim.cmd("echo 'git add " .. vim.fn.expand("%") .. "'")
+	end, { desc = "git add current file" }
+)
