@@ -43,11 +43,10 @@ vim.keymap.set("n", "Q", "<nop>")
 
 vim.keymap.set("n", "<leader>ga",
 	function()
-		-- add current file to git
-		vim.cmd("echo 'git add " .. vim.fn.expand("%") .. "'")
 		-- get confirmation from user
 		local confirm = vim.fn.input("Add current file to git? (Y/n): ")
 		if confirm == "" or confirm == "y" or confirm == "Y" then
+			vim.cmd("echo 'git add " .. vim.fn.expand("%") .. "'")
 			vim.cmd("silent !git add " .. vim.fn.expand("%"))
 		end
 	end, { desc = "git add current file" }
@@ -67,4 +66,15 @@ vim.keymap.set("n", "<leader>gc",
 			end
 		)
 	end, { desc = "git commit" }
+)
+
+vim.keymap.set("n", "<leader>gp",
+	function()
+		-- get confirmation from user
+		local confirm = vim.fn.input("Push to origin? (Y/n): ")
+		if confirm == "" or confirm == "y" or confirm == "Y" then
+			vim.cmd("echo 'git push origin'")
+			vim.cmd("silent !git push origin")
+		end
+	end, { desc = "git push" }
 )
