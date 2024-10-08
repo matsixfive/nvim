@@ -39,10 +39,21 @@ vim.keymap.set("i", "<C-c>", "<Esc>", { silent = true })
 
 vim.keymap.set("n", "Q", "<nop>")
 
+-- ** Git ** --
+
 vim.keymap.set("n", "<leader>ga",
 	function()
 		-- add current file to git
 		vim.cmd("silent !git add %")
 		vim.cmd("echo 'git add " .. vim.fn.expand("%") .. "'")
 	end, { desc = "git add current file" }
+)
+
+vim.keymap.set("n", "<leader>gc",
+	function()
+		-- commit with message
+		local message = vim.fn.input("Commit message: ")
+		vim.cmd("silent !git commit -m '" .. message .. "'")
+		vim.cmd("echo 'git commit -m \"" .. message .. "\"'")
+	end, { desc = "git commit" }
 )
