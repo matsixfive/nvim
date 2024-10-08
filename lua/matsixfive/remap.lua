@@ -56,8 +56,15 @@ vim.keymap.set("n", "<leader>ga",
 vim.keymap.set("n", "<leader>gc",
 	function()
 		-- commit with message
-		local message = vim.fn.input("Commit message: ")
-		vim.cmd("echo 'git commit -m \"" .. message .. "\"'")
-		vim.cmd("silent !git commit -m '" .. message .. "'")
+		vim.ui.input({ prompt = "Commit message: " },
+			function(message)
+				if message == nil or message == "" then
+					vim.cmd("echo 'No message provided, aborted'")
+					return
+				end
+				vim.cmd("echo 'git commit -m \"" .. message .. "\"'")
+				vim.cmd("silent !git commit -m '" .. message .. "'")
+			end
+		)
 	end, { desc = "git commit" }
 )
