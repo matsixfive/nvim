@@ -1,5 +1,6 @@
 require("matsixfive.remap")
 require("matsixfive.set")
+require("matsixfive.autocmd")
 require("matsixfive.theme")
 require("matsixfive.lazy")
 require("matsixfive.filetype")

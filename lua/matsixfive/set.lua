@@ -15,6 +15,7 @@ vim.opt.swapfile = false
 vim.opt.autoread = true
 
 vim.opt.backup = false
+vim.opt.backupcopy = "yes"
 vim.opt.undodir = vim.loop.os_homedir() .. "/.vim/undodir"
 vim.opt.undofile = true
 

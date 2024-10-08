@@ -3,12 +3,13 @@ vim.g.have_nerd_font = true
 
 vim.opt.hlsearch = true
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
+vim.keymap.set("n", "<leader>/", "<cmd>nohlsearch<CR>")
 
 -- move lines up and down
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 
--- move line below to end of line
+-- move line below to end of line without moving cursor
 vim.keymap.set("n", "J", "mzJ`z")
 
 -- select last edited text
@@ -31,9 +32,8 @@ vim.keymap.set("n", "<leader>x", "a <ESC>h<C-x>lxh")
 -- copy to windows clipboard from WSL
 vim.keymap.set("v", "<leader>c", "<cmd>'<,'>w !clip.exe<CR><CR>", { silent = true })
 
-vim.keymap.set("n", "<TAB>", "<cmd>bnext<CR>")
-vim.keymap.set("n", "<S-TAB>", "<cmd>bprev<CR>")
-
+-- vim.keymap.set("n", "<TAB>", "<cmd>bnext<CR>")
+-- vim.keymap.set("n", "<S-TAB>", "<cmd>bprev<CR>")
 
 vim.keymap.set("i", "<C-c>", "<Esc>", { silent = true })
 
