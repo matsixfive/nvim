@@ -73,8 +73,8 @@ vim.keymap.set("n", "<leader>gp",
 		-- get confirmation from user
 		local confirm = vim.fn.input("Push to origin? (Y/n): ")
 		if confirm == "" or confirm == "y" or confirm == "Y" then
-			vim.cmd("echo 'git push origin'")
-			vim.cmd("silent !git push origin")
+			-- vim.cmd("echo 'git push origin'")
+			vim.cmd("!git push origin")
 		end
 	end, { desc = "git push" }
 )
