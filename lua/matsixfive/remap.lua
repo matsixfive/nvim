@@ -12,6 +12,9 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 -- move line below to end of line without moving cursor
 vim.keymap.set("n", "J", "mzJ`z")
 
+-- quit all (for difftool)
+vim.api.nvim_set_keymap('n', 'ZZ', ':qa<CR>', { noremap = true, silent = true })
+
 -- select last edited text
 vim.keymap.set("n", "gV", "`[v`]")
 
