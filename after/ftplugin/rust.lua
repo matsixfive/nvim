@@ -1,4 +1,4 @@
-local ts_utils = require 'nvim-treesitter.ts_utils'
+local ts_utils = require('nvim-treesitter.ts_utils')
 
 local function delete_range(buf, start_line, start_col, end_line, end_col)
 	end_col = end_col - 1
