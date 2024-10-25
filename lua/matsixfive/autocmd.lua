@@ -21,7 +21,10 @@ autocmd("BufEnter", {
 		vim.cmd("Copilot disable")
 
 		local filetype = vim.bo.filetype
-		UniOptTable[filetype]()
+		local options = UniOptTable[filetype]
+		if options ~= nil then
+			options()
+		end
 	end,
 	group = general,
 	desc = "Disable copilot for university files",
