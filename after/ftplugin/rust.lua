@@ -19,6 +19,10 @@ end
 vim.keymap.set('n', '<leader>m', function()
 	local node = ts_utils.get_node_at_cursor()
 
+	if not node then
+		return
+	end
+
 	while node:type() ~= "let_declaration" do
 		node = node:parent()
 		if not node then

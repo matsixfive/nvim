@@ -5,6 +5,8 @@ vim.opt.hlsearch = true
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 vim.keymap.set("n", "<leader>/", "<cmd>nohlsearch<CR>")
 
+vim.keymap.set("i", "jk", "<Esc>")
+
 -- move lines up and down
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -13,7 +15,7 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("n", "J", "mzJ`z")
 
 -- quit all (for difftool)
-vim.api.nvim_set_keymap('n', 'ZZ', ':qa<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', 'ZZ', ':qa<CR>', { noremap = true, silent = true })
 
 -- select last edited text
 vim.keymap.set("n", "gV", "`[v`]")

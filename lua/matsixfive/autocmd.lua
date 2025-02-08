@@ -9,16 +9,23 @@ autocmd("TextYankPost", {
 })
 
 autocmd("BufEnter", {
-	callback = function(args)
-		local bufnr = args.buf
-
-		local fisrt_line = vim.fn.getbufoneline(bufnr, 1)
-		local is_university_file = string.match(fisrt_line, "!!uni")
-		if not is_university_file then
+	callback = function()
+		-- any file in a directory named uni
+		local is_uni = vim.regex("/uni/"):match_str(vim.fn.expand("%:p"))
+		if is_uni == nil then
+			-- source lua colorscheme config file
+			vim.defer_fn(function()
+				-- TODO: reset to colorscheme that was set before
+				vim.api.nvim_command("colorscheme onedark")
+			end, 0)
 			return
 		end
+
 		-- Disable copilot
 		vim.cmd("Copilot disable")
+		vim.defer_fn(function()
+			vim.api.nvim_command("colorscheme tokyonight")
+		end, 0)
 
 		local filetype = vim.bo.filetype
 		local options = UniOptTable[filetype]

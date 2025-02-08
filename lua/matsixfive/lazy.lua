@@ -21,14 +21,10 @@ require('lazy').setup({
 	{ 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
 
 	-- ********* Editing **********
-	{ 'numToStr/Comment.nvim', config = true },
+	{ 'numToStr/Comment.nvim',           config = true },
 	'nishigori/increment-activator',
 	'rstacruz/vim-closer',
-	{
-		"danymat/neogen",
-		config = true,
-		version = "*"
-	},
+	{ "danymat/neogen",           version = "*" },
 
 	-- ********** LSP *************
 	{
@@ -72,4 +68,5 @@ require('lazy').setup({
 		'nvim-lualine/lualine.nvim',
 		dependencies = { 'nvim-tree/nvim-web-devicons', lazy = true }
 	},
+	{ "lukas-reineke/indent-blankline.nvim" }
 })
