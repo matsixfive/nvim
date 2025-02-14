@@ -26,3 +26,5 @@ vim.opt.showmode = false
 vim.opt.scrolloff = 8
 
 vim.opt.updatetime = 50
+
+vim.g.ftplugin_sql_omni_key = "<leader>sql"
