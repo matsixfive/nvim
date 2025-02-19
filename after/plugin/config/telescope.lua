@@ -2,13 +2,29 @@ local builtin = require('telescope.builtin')
 local utils = require('telescope.utils')
 
 vim.keymap.set('n', '<leader>vh', builtin.help_tags, { desc = "Telescope vim help" })
+
 vim.keymap.set('n', '<leader>pg', builtin.live_grep, { desc = "Telescope live grep" })
 vim.keymap.set('n', '<leader>pf', builtin.find_files, { desc = "Telescope find files" })
+
+vim.keymap.set('n', '<leader>pd',
+	function()
+		builtin.diagnostics()
+	end, { desc = "Telescope diagnostic" }
+)
+vim.keymap.set('n', '<leader>pe',
+	function()
+		builtin.diagnostics({
+			severity = "error"
+		})
+	end, { desc = "Telescope errors" }
+)
+
 vim.keymap.set('n', '<leader>cs',
 	function()
 		builtin.colorscheme({ enable_preview = true })
 	end, { desc = "Telescope colorscheme" }
 )
+
 vim.keymap.set('n', '<C-p>',
 	function()
 		local _, ret, _ = utils.get_os_command_output({ 'git', 'rev-parse', '--is-inside-work-tree' })

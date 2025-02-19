@@ -27,6 +27,9 @@ autocmd("BufEnter", {
 			vim.api.nvim_command("colorscheme tokyonight")
 		end, 0)
 
+		-- Git blame
+		vim.g.gitblame_display_virtual_text = 1
+
 		local filetype = vim.bo.filetype
 		local options = UniOptTable[filetype]
 		if options ~= nil then

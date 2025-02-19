@@ -21,7 +21,7 @@ require('lazy').setup({
 	{ 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
 
 	-- ********* Editing **********
-	{ 'numToStr/Comment.nvim',           config = true },
+	{ 'numToStr/Comment.nvim' },
 	'nishigori/increment-activator',
 	'rstacruz/vim-closer',
 	{ "danymat/neogen",           version = "*" },
@@ -64,6 +64,9 @@ require('lazy').setup({
 	'nvim-tree/nvim-web-devicons',
 	'nvim-telescope/telescope-ui-select.nvim',
 	{ 'lewis6991/gitsigns.nvim',          config = true },
+	{
+		'f-person/git-blame.nvim'
+	},
 	{
 		'nvim-lualine/lualine.nvim',
 		dependencies = { 'nvim-tree/nvim-web-devicons', lazy = true }

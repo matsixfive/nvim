@@ -11,6 +11,7 @@ require("onedark").setup {
 		bg_blue = "#47a7f5",
 		bg_yellow = "#f7c56a",
 		fg = "#b6bdc7",
+		fg_faint = "#4c5255",
 		purple = "#cf4bf6",
 		green = "#8bd553",
 		light_green = "#6aee3a",
@@ -36,6 +37,7 @@ require("onedark").setup {
 		CursorLine = { bg = "$bg1" },
 		["@character"] = { fg = '$light_green' },
 		["@string.escape"] = { fg = '$light_red' },
+		GitBlame = { bg = "$bg1", fg = "$fg_faint" },
 	}
 }
 
