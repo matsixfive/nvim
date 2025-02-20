@@ -47,6 +47,7 @@ require('lazy').setup({
 			'L3MON4D3/LuaSnip',  -- Required
 		}
 	},
+	{ 'mfussenegger/nvim-jdtls' },
 
 	-- ********** Copilot *********
 	-- { 'github/copilot.vim',              branch = 'release' },
