@@ -65,5 +65,10 @@ require("tokyonight").setup({
 		highlights["VertSplit"] = {
 			fg = colors.bg_highlight
 		}
+
+		highlights["GitBlame"] = {
+			bg = colors.bg_highlight,
+			fg = colors.fg_gutter
+		}
 	end
 })

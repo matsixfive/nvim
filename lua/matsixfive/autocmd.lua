@@ -17,6 +17,7 @@ autocmd("BufEnter", {
 			vim.defer_fn(function()
 				-- TODO: reset to colorscheme that was set before
 				vim.api.nvim_command("colorscheme onedark")
+				vim.cmd("GitBlameDisable")
 			end, 0)
 			return
 		end
@@ -28,7 +29,7 @@ autocmd("BufEnter", {
 		end, 0)
 
 		-- Git blame
-		vim.g.gitblame_display_virtual_text = 1
+		vim.cmd("GitBlameEnable")
 
 		local filetype = vim.bo.filetype
 		local options = UniOptTable[filetype]

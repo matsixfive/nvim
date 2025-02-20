@@ -9,6 +9,4 @@ require('gitblame').setup {
 	highlight_group = "GitBlame",
 }
 
-vim.g.gitblame_display_virtual_text = 0
-
 vim.keymap.set("n", "<leader>gb", "<cmd>GitBlameToggle<cr>", { noremap = true, silent = true })
