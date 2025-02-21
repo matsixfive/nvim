@@ -21,10 +21,10 @@ require('lazy').setup({
 	{ 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
 
 	-- ********* Editing **********
-	{ 'numToStr/Comment.nvim' },
+	'numToStr/Comment.nvim',
 	'nishigori/increment-activator',
 	'rstacruz/vim-closer',
-	{ "danymat/neogen",           version = "*" },
+	{ 'danymat/neogen',                  version = '*' },
 
 	-- ********** LSP *************
 	{
@@ -47,7 +47,7 @@ require('lazy').setup({
 			'L3MON4D3/LuaSnip',  -- Required
 		}
 	},
-	{ 'mfussenegger/nvim-jdtls' },
+	'mfussenegger/nvim-jdtls',
 
 	-- ********** Copilot *********
 	-- { 'github/copilot.vim',              branch = 'release' },
@@ -56,8 +56,15 @@ require('lazy').setup({
 
 	-- ************ UI ************
 	'nvim-telescope/telescope.nvim',
+	{
+		'matsixfive/chafa.nvim',
+		dependencies = {
+			'nvim-lua/plenary.nvim',
+			'm00qek/baleia.nvim'
+		}
+  },
 	'stevearc/oil.nvim',
-	{ "refractalize/oil-git-status.nvim", dependencies = { "stevearc/oil.nvim", }, },
+	{ 'refractalize/oil-git-status.nvim', dependencies = { 'stevearc/oil.nvim', }, },
 	-- 'rktjmp/lush.nvim',
 	'folke/tokyonight.nvim',
 	'startup-nvim/startup.nvim',
@@ -65,12 +72,10 @@ require('lazy').setup({
 	'nvim-tree/nvim-web-devicons',
 	'nvim-telescope/telescope-ui-select.nvim',
 	{ 'lewis6991/gitsigns.nvim',          config = true },
-	{
-		'f-person/git-blame.nvim'
-	},
+	'f-person/git-blame.nvim',
 	{
 		'nvim-lualine/lualine.nvim',
 		dependencies = { 'nvim-tree/nvim-web-devicons', lazy = true }
 	},
-	{ "lukas-reineke/indent-blankline.nvim" }
+	'lukas-reineke/indent-blankline.nvim'
 })
