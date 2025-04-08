@@ -1,0 +1,6 @@
+vim.api.nvim_create_user_command('Open', function()
+	local path = vim.fn.expand('%:p:h')
+	path = string.gsub(path, '^.*://', '')
+	path = string.gsub(path, '/', '\\')
+	vim.ui.open("\\\\wsl.localhost\\Arch" .. path)
+end, { desc = 'Open current file in explorer' })
