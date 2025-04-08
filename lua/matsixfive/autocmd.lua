@@ -2,10 +2,18 @@ local autocmd = vim.api.nvim_create_autocmd
 
 autocmd("TextYankPost", {
 	callback = function()
-		require("vim.highlight").on_yank { higroup = "IncSearch", timeout = 100 }
+		require("vim.hl").on_yank { higroup = "IncSearch", timeout = 100 }
 	end,
 	group = general,
 	desc = "Highlight when yanking",
+})
+
+autocmd("BufEnter", {
+	callback = function()
+		vim.opt.formatoptions:remove("o")
+	end,
+	group = general,
+	desc = "Disable comment insertion on `o`",
 })
 
 autocmd("BufEnter", {
@@ -48,4 +56,7 @@ UniOptTable = {
 		vim.opt.expandtab = true
 		vim.opt.colorcolumn = "80"
 	end,
+	["ruby"] = function()
+		vim.opt.colorcolumn = "120"
+	end
 }
