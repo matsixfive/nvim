@@ -25,6 +25,15 @@ cmp_mappings['<S-Tab>'] = nil
 
 lsp.setup_nvim_cmp({
 	mapping = cmp_mappings,
+	sources = {
+    {name = 'nvim_lsp'},
+    {name = 'luasnip'},
+  },
+	snippet = {
+    expand = function(args)
+      require('luasnip').lsp_expand(args.body)
+    end,
+  },
 })
 
 vim.keymap.set("n", "<leader>dd", function() vim.diagnostic.open_float() end, opts)

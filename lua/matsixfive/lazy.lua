@@ -48,6 +48,12 @@ require('lazy').setup({
 		}
 	},
 	'mfussenegger/nvim-jdtls',
+	{
+		'saadparwaiz1/cmp_luasnip',
+		dependencies = {
+			'L3MON4D3/LuaSnip'
+		}
+	},
 
 	-- ********** Copilot *********
 	-- { 'github/copilot.vim',              branch = 'release' },
@@ -62,7 +68,7 @@ require('lazy').setup({
 			'nvim-lua/plenary.nvim',
 			'm00qek/baleia.nvim'
 		}
-  },
+	},
 	'stevearc/oil.nvim',
 	{ 'refractalize/oil-git-status.nvim', dependencies = { 'stevearc/oil.nvim', }, },
 	-- 'rktjmp/lush.nvim',
