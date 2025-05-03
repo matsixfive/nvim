@@ -25,12 +25,14 @@ autocmd("BufEnter", {
 			vim.defer_fn(function()
 				-- TODO: reset to colorscheme that was set before
 				vim.api.nvim_command("colorscheme onedark")
+				require("gitblame")
 				vim.cmd("GitBlameDisable")
 			end, 0)
 			return
 		end
 
 		-- Disable copilot
+		require("copilot.lua")
 		vim.cmd("Copilot disable")
 		vim.defer_fn(function()
 			vim.api.nvim_command("colorscheme tokyonight")

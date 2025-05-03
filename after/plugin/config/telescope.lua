@@ -36,12 +36,8 @@ vim.keymap.set('n', '<C-p>',
 	end, { desc = "Telescope git files" }
 )
 
--- vim.keymap.set('n', '<leader>/', builtin.current_buffer_fuzzy_find, {})
-
 -- change mappings
-require('telescope').setup({
-	defaults = {
-		danamic_preview_title = true,
+require('telescope').setup({ defaults = { danamic_preview_title = true,
 		mappings = {
 			i = {
 				["<C-j>"] = require('telescope.actions').move_selection_next,
