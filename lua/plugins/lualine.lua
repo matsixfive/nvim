@@ -43,8 +43,6 @@ return {
 									unknown = "#FF5555"
 								}
 							},
-							spinners = "circle_halves",
-							spinner_color = "#A8A8CE"
 						},
 						show_colors = true,
 						show_loading = true,
