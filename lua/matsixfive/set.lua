@@ -29,6 +29,8 @@ vim.opt.updatetime = 50
 
 vim.g.ftplugin_sql_omni_key = "<leader>sql"
 
+vim.opt.conceallevel = 2
+
 -- wraps zsh to run as interactive shell for things like `:!`
 local wrapper_path = os.getenv("HOME") .. "/.local/bin/nvim_zsh_wrapper"
 if vim.fn.filereadable(wrapper_path) == 1 then

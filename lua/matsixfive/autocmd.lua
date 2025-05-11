@@ -4,7 +4,6 @@ autocmd("TextYankPost", {
 	callback = function()
 		require("vim.hl").on_yank { higroup = "IncSearch", timeout = 100 }
 	end,
-	group = general,
 	desc = "Highlight when yanking",
 })
 
@@ -12,34 +11,33 @@ autocmd("BufEnter", {
 	callback = function()
 		vim.opt.formatoptions:remove("o")
 	end,
-	group = general,
 	desc = "Disable comment insertion on `o`",
 })
 
-autocmd("BufEnter", {
+local uni_group = vim.api.nvim_create_augroup("Uni", { clear = true })
+
+autocmd({ "DirChanged", "VimEnter" }, {
 	callback = function()
 		-- any file in a directory named uni
-		local is_uni = vim.regex("/uni/"):match_str(vim.fn.expand("%:p"))
+		local is_uni = vim.regex("/uni/"):match_str(vim.fn.getcwd())
 		if is_uni == nil then
 			-- source lua colorscheme config file
 			vim.defer_fn(function()
-				-- TODO: reset to colorscheme that was set before
 				vim.api.nvim_command("colorscheme onedark")
-				require("gitblame")
-				vim.cmd("GitBlameDisable")
 			end, 0)
+
+			require("copilot.command").enable()
+
 			return
 		end
 
-		-- Disable copilot
-		require("copilot.lua")
-		vim.cmd("Copilot disable")
+		require("copilot.command").disable()
+		require("gitblame").enable()
+
 		vim.defer_fn(function()
+			require("tokyonight")
 			vim.api.nvim_command("colorscheme tokyonight")
 		end, 0)
-
-		-- Git blame
-		vim.cmd("GitBlameEnable")
 
 		local filetype = vim.bo.filetype
 		local options = UniOptTable[filetype]
@@ -47,7 +45,7 @@ autocmd("BufEnter", {
 			options()
 		end
 	end,
-	group = general,
+	group = uni_group,
 	desc = "Disable copilot for university files",
 })
 

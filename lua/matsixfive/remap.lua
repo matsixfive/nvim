@@ -44,6 +44,9 @@ vim.keymap.set("i", "<C-c>", "<Esc>", { silent = true })
 
 vim.keymap.set("n", "Q", "<nop>")
 
+vim.keymap.set("n", "<leader>gb", function() require('gitblame').toggle() end, { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>dc", function() require('neogen').generate({ type = "func", }) end)
+
 -- ** Git ** --
 
 vim.keymap.set("n", "<leader>ga",

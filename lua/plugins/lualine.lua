@@ -1,7 +1,13 @@
 return {
 	{
 		'nvim-lualine/lualine.nvim',
-		dependencies = { 'nvim-tree/nvim-web-devicons', lazy = true },
+		dependencies = {
+			'nvim-tree/nvim-web-devicons',
+			{
+				'AndreM222/copilot-lualine',
+				lazy = true,
+			},
+		},
 		opts = {
 			sections = {
 				lualine_a = { 'mode' },
@@ -37,7 +43,7 @@ return {
 									unknown = "#FF5555"
 								}
 							},
-							spinners = require("copilot-lualine.spinners").circle_halves,
+							spinners = "circle_halves",
 							spinner_color = "#A8A8CE"
 						},
 						show_colors = true,
@@ -45,14 +51,10 @@ return {
 					},
 					'encoding',
 					'fileformat',
-					'filetype'
 				},
-				lualine_y = { {
-					'datetime',
-					style = 'iso'
-				} },
+				lualine_y = { 'filetype' },
 				lualine_z = { 'location' }
 			},
-		}
+		},
 	},
 }

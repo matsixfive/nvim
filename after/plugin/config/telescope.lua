@@ -1,48 +1,44 @@
-local builtin = require('telescope.builtin')
-local utils = require('telescope.utils')
+vim.keymap.set('n', '<leader>vh',
+	require("telescope.builtin").help_tags,
+	{ desc = "Telescope vim help" }
+)
 
-vim.keymap.set('n', '<leader>vh', builtin.help_tags, { desc = "Telescope vim help" })
-
-vim.keymap.set('n', '<leader>pg', builtin.live_grep, { desc = "Telescope live grep" })
-vim.keymap.set('n', '<leader>pf', builtin.find_files, { desc = "Telescope find files" })
+vim.keymap.set('n', '<leader>pg',
+	require("telescope.builtin").live_grep,
+	{ desc = "Telescope live grep" }
+)
+vim.keymap.set('n', '<leader>pf',
+	require("telescope.builtin").find_files,
+	{ desc = "Telescope find files" }
+)
 
 vim.keymap.set('n', '<leader>pd',
-	function()
-		builtin.diagnostics()
-	end, { desc = "Telescope diagnostic" }
+	require("telescope.builtin").diagnostics,
+	{ desc = "Telescope diagnostic" }
 )
 vim.keymap.set('n', '<leader>pe',
 	function()
-		builtin.diagnostics({
-			severity = "error"
-		})
-	end, { desc = "Telescope errors" }
+		require("telescope.builtin").diagnostics({ severity = "error" })
+	end,
+	{ desc = "Telescope errors" }
 )
 
 vim.keymap.set('n', '<leader>cs',
 	function()
-		builtin.colorscheme({ enable_preview = true })
-	end, { desc = "Telescope colorscheme" }
+		require("telescope.builtin").colorscheme({ enable_preview = true })
+	end,
+	{ desc = "Telescope colorscheme" }
 )
 
 vim.keymap.set('n', '<C-p>',
 	function()
-		local _, ret, _ = utils.get_os_command_output({ 'git', 'rev-parse', '--is-inside-work-tree' })
+		local _, ret, _ = require("telescope.utils").get_os_command_output({ 'git', 'rev-parse', '--is-inside-work-tree' })
 		if ret == 0 then
-			builtin.git_files()
+			require("telescope.builtin").git_files()
 		else
-			builtin.find_files()
+			require("telescope.builtin").find_files()
 		end
 	end, { desc = "Telescope git files" }
 )
 
 -- change mappings
-require('telescope').setup({ defaults = { danamic_preview_title = true,
-		mappings = {
-			i = {
-				["<C-j>"] = require('telescope.actions').move_selection_next,
-				["<C-k>"] = require('telescope.actions').move_selection_previous,
-			}
-		},
-	},
-})
