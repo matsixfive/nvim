@@ -20,6 +20,8 @@ autocmd({ "DirChanged", "VimEnter" }, {
 	callback = function()
 		-- any file in a directory named uni
 		local is_uni = vim.regex("/uni/"):match_str(vim.fn.getcwd())
+		vim.g.is_uni = is_uni ~= nil
+
 		if is_uni == nil then
 			-- source lua colorscheme config file
 			vim.defer_fn(function()
@@ -38,25 +40,35 @@ autocmd({ "DirChanged", "VimEnter" }, {
 			require("tokyonight")
 			vim.api.nvim_command("colorscheme tokyonight")
 		end, 0)
-
-		local filetype = vim.bo.filetype
-		local options = UniOptTable[filetype]
-		if options ~= nil then
-			options()
-		end
 	end,
 	group = uni_group,
 	desc = "Disable copilot for university files",
 })
 
+autocmd({ "BufWinEnter", "UiEnter" }, {
+	callback = function()
+		if vim.g.is_uni == true then
+			local filetype = vim.bo.filetype
+			vim.print("Filetype: " .. filetype)
+			local options = UniOptTable[filetype]
+			if options ~= nil then
+				vim.print("Setting options for " .. filetype)
+				options()
+			end
+		end
+	end,
+	group = uni_group,
+	desc = "Set options for university files",
+})
+
 UniOptTable = {
 	["java"] = function()
-		vim.opt.tabstop = 4
-		vim.opt.shiftwidth = 4
-		vim.opt.expandtab = true
-		vim.opt.colorcolumn = "80"
+		vim.opt_local.tabstop = 4
+		vim.opt_local.shiftwidth = 4
+		vim.opt_local.expandtab = true
+		vim.opt_local.colorcolumn = "80"
 	end,
 	["ruby"] = function()
-		vim.opt.colorcolumn = "120"
+		vim.opt_local.colorcolumn = "120"
 	end
 }
