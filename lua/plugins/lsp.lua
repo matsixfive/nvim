@@ -20,10 +20,10 @@ return {
 			'L3MON4D3/LuaSnip',  -- Required
 		}
 	},
-	{
-		'mfussenegger/nvim-jdtls',
-		lazy = true,
-	},
+	-- {
+	-- 	'mfussenegger/nvim-jdtls',
+	-- 	lazy = true,
+	-- },
 	{
 		'saadparwaiz1/cmp_luasnip',
 		lazy = true,
