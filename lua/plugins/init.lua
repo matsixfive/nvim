@@ -5,7 +5,6 @@ return {
 	{ 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
 
 	-- ********* Editing **********
-	'nishigori/increment-activator',
 	'rstacruz/vim-closer',
 
 	-- ************ UI ************
