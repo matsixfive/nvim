@@ -44,31 +44,3 @@ autocmd({ "DirChanged", "VimEnter" }, {
 	group = uni_group,
 	desc = "Disable copilot for university files",
 })
-
-autocmd({ "BufWinEnter", "UiEnter" }, {
-	callback = function()
-		if vim.g.is_uni == true then
-			local filetype = vim.bo.filetype
-			vim.print("Filetype: " .. filetype)
-			local options = UniOptTable[filetype]
-			if options ~= nil then
-				vim.print("Setting options for " .. filetype)
-				options()
-			end
-		end
-	end,
-	group = uni_group,
-	desc = "Set options for university files",
-})
-
-UniOptTable = {
-	["java"] = function()
-		vim.opt_local.tabstop = 4
-		vim.opt_local.shiftwidth = 4
-		vim.opt_local.expandtab = true
-		vim.opt_local.colorcolumn = "80"
-	end,
-	["ruby"] = function()
-		vim.opt_local.colorcolumn = "120"
-	end
-}
