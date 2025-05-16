@@ -1,11 +1,12 @@
 require('nvim-treesitter.configs').setup {
-	ensure_installed = { "javascript",
-		"typescript",
+	ensure_installed = {
 		"c",
 		"lua",
 		"rust",
 		"html",
-		"css"
+		"css",
+		"comment",
+		"jsdoc",
 	},
 	sync_install = false,
 	auto_install = true,
@@ -22,7 +23,7 @@ vim.treesitter.language.register("markdown", "mdx")
 vim.keymap.set("n", "<C-e>",
 	function()
 		local result = vim.treesitter.get_captures_at_cursor(0)
-		print(vim.inspect(result))
+		vim.print(result)
 	end,
 	{ noremap = true, silent = false }
 )

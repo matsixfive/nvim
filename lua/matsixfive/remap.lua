@@ -34,18 +34,9 @@ vim.keymap.set("v", ">", ">gv")
 vim.keymap.set("n", "<leader>a", "a <ESC>h<C-a>lxh")
 vim.keymap.set("n", "<leader>x", "a <ESC>h<C-x>lxh")
 
--- copy to windows clipboard from WSL
-vim.keymap.set("v", "<leader>c", "<cmd>'<,'>w !clip.exe<CR><CR>", { silent = true })
-
--- vim.keymap.set("n", "<TAB>", "<cmd>bnext<CR>")
--- vim.keymap.set("n", "<S-TAB>", "<cmd>bprev<CR>")
-
 vim.keymap.set("i", "<C-c>", "<Esc>", { silent = true })
 
 vim.keymap.set("n", "Q", "<nop>")
-
-vim.keymap.set("n", "<leader>gb", function() require('gitblame').toggle() end, { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>dc", function() require('neogen').generate({ type = "func", }) end)
 
 -- ** Git ** --
 

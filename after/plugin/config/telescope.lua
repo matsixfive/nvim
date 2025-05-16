@@ -40,5 +40,3 @@ vim.keymap.set('n', '<C-p>',
 		end
 	end, { desc = "Telescope git files" }
 )
-
--- change mappings

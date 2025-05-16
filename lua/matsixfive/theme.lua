@@ -40,14 +40,14 @@ local diagnosticIcons = {
 }
 
 vim.diagnostic.config({
-  signs = {
-    text = {
-      [vim.diagnostic.severity.ERROR] = diagnosticIcons.Error,
-      [vim.diagnostic.severity.WARN]  = diagnosticIcons.Warn,
-      [vim.diagnostic.severity.HINT]  = diagnosticIcons.Hint,
-      [vim.diagnostic.severity.INFO]  = diagnosticIcons.Info,
-    },
-  },
+	signs = {
+		text = {
+			[vim.diagnostic.severity.ERROR] = diagnosticIcons.Error,
+			[vim.diagnostic.severity.WARN]  = diagnosticIcons.Warn,
+			[vim.diagnostic.severity.HINT]  = diagnosticIcons.Hint,
+			[vim.diagnostic.severity.INFO]  = diagnosticIcons.Info,
+		},
+	},
 	underline = true,
 	virtual_text = {
 		spacing = 3,

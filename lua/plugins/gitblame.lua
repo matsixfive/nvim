@@ -1,3 +1,7 @@
+vim.keymap.set("n", "<leader>gb", function() require('gitblame').toggle() end, { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>gb", function() require('gitblame').toggle() end, { noremap = true, silent = true })
+
+
 return {
 	'f-person/git-blame.nvim',
 	lazy = true,
