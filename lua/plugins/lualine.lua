@@ -7,6 +7,7 @@ return {
 				'AndreM222/copilot-lualine',
 				lazy = true,
 			},
+			'arkav/lualine-lsp-progress'
 		},
 		opts = {
 			sections = {
@@ -17,7 +18,12 @@ return {
 					{
 						'diagnostics',
 						sources = { 'nvim_lsp' },
-						symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' },
+						symbols = {
+							error = " ",
+							warn = " ",
+							hint = " ",
+							info = " ",
+						},
 					}
 				},
 				lualine_c = {
@@ -25,12 +31,42 @@ return {
 				},
 				lualine_x = {
 					{
+						'lsp_progress',
+						display_components = {
+							'lsp_client_name',
+							'spinner',
+							'percentage',
+							'title'
+						},
+						separators = {
+							lsp_client_name = { pre = '', post = '' },
+						},
+						spinner_symbols = {
+							'🌑 ',
+							'🌒 ',
+							'🌒 ',
+							'🌓 ',
+							'🌔 ',
+							'🌔 ',
+
+							'🌕 ',
+							'🌖 ',
+							'🌖 ',
+							'🌗 ',
+							'🌘 ',
+							'🌘 ',
+						},
+						timer = {
+							spinner = 100,
+						}
+					},
+					{
 						'copilot',
 						symbols = {
 							status = {
 								icons = {
 									enabled = " ",
-									sleep = " ", -- auto-trigger disabled
+									sleep = " ",
 									disabled = " ",
 									warning = " ",
 									unknown = " "

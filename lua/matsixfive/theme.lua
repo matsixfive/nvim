@@ -3,6 +3,8 @@ vim.opt.termguicolors = true
 vim.opt.background = "dark"
 vim.opt.colorcolumn = "60"
 
+vim.opt.winborder = "rounded"
+
 vim.opt.fillchars = {
 	vert = "‖",
 	fold = " ",
@@ -48,7 +50,7 @@ vim.diagnostic.config({
 			[vim.diagnostic.severity.INFO]  = diagnosticIcons.Info,
 		},
 	},
-	underline = true,
+  underline = true,
 	virtual_text = {
 		spacing = 3,
 		update_in_insert = true,
@@ -82,3 +84,12 @@ vim.diagnostic.config({
 		end,
 	},
 })
+
+-- Customize highlight groups (optional but good practice)
+vim.cmd [[
+
+  highlight DiagnosticUnderlineError gui=undercurl guisp=Red
+  highlight DiagnosticUnderlineWarn  gui=undercurl guisp=Yellow
+  highlight DiagnosticUnderlineInfo  gui=undercurl guisp=Blue
+  highlight DiagnosticUnderlineHint  gui=undercurl guisp=Green
+]]

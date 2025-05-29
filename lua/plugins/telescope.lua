@@ -96,6 +96,21 @@ local function shorten_path_to_length(path, max_length)
 	return table.concat(shortened, "/")
 end
 
+vim.api.nvim_create_autocmd("User", {
+
+  pattern = "TelescopeFindPre",
+  callback = function()
+    vim.opt_local.winborder = "none"
+    vim.api.nvim_create_autocmd("WinLeave", {
+      once = true,
+      callback = function()
+        vim.opt_local.winborder = "rounded"
+      end,
+
+    })
+  end,
+})
+
 return {
 	{
 		'nvim-telescope/telescope.nvim',
