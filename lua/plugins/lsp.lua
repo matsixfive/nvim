@@ -4,24 +4,12 @@ vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename)
 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action)
 vim.keymap.set("n", "<leader>ff", function() vim.lsp.buf.format({ async = true }) end)
 vim.keymap.set("n", "<leader>dd", vim.diagnostic.open_float)
+-- open blink completion
+vim.keymap.set("i", "<C-Space>", function()
+	print("Opening Blink Completion")
+	-- require("blink.cmp").open_completion()
+end, { desc = "Open Blink Completion" })
 
-vim.api.nvim_create_autocmd('User', {
-  pattern = 'BlinkCmpMenuOpen',
-  callback = function()
-
-    require("copilot.suggestion").dismiss()
-    vim.b.copilot_suggestion_hidden = true
-  end,
-})
-
-vim.api.nvim_create_autocmd('User', {
-  pattern = 'BlinkCmpMenuClose',
-  callback = function()
-    vim.b.copilot_suggestion_hidden = false
-  end,
-})
-
--- lua/plugins/lsp.lua
 return {
 	{
 		"neovim/nvim-lspconfig",
@@ -30,7 +18,6 @@ return {
 			{ "williamboman/mason.nvim", build = ":MasonUpdate" },
 			"williamboman/mason-lspconfig.nvim",
 			"Saghen/blink.cmp",
-			-- "L3MON4D3/LuaSnip",
 		},
 		config = function()
 			local mason = require("mason")

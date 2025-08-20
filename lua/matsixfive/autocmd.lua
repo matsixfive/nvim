@@ -14,6 +14,20 @@ autocmd("BufEnter", {
 	desc = "Disable comment insertion on `o`",
 })
 
+autocmd("BufEnter", {
+	callback = function()
+		if vim.bo.filetype ~= "oil" then
+			return
+		end
+
+		local line = vim.api.nvim_win_get_cursor(0)[1]
+		if line > 0 then
+			vim.cmd("normal! " .. 2 .. "G")
+		end
+	end,
+	desc = "Move cursor to second line in oil",
+})
+
 local uni_group = vim.api.nvim_create_augroup("Uni", { clear = true })
 
 autocmd({ "DirChanged", "VimEnter" }, {

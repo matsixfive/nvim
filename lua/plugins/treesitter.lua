@@ -11,7 +11,7 @@ return {
 	'nvim-treesitter/nvim-treesitter',
 	build = ':TSUpdate',
 	main = 'nvim-treesitter.config',
-	lazy = true,
+	lazy = false,
 	config = function()
 		require('nvim-treesitter.configs').setup {
 			ensure_installed = {
@@ -32,5 +32,20 @@ return {
 		}
 
 		vim.treesitter.language.register("markdown", "mdx")
+
+		local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+		parser_config.mcfunction = {
+			install_info = {
+				url = "https://github.com/theusaf/tree-sitter-mcfunction-lang", -- local path or git repo
+				files = { "src/parser.c" },                         -- note that some parsers also require src/scanner.c or src/scanner.cc
+			},
+		}
+
+		-- .mcfunction filetype
+		vim.filetype.add({
+			extension = {
+				mcfunction = "mcfunction",
+			},
+		})
 	end
 }
