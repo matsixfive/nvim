@@ -45,8 +45,13 @@ vim.keymap.set("n", "<leader>ga",
 		-- get confirmation from user
 		local confirm = vim.fn.input("Add current file to git? (Y/n): ")
 		if confirm == "" or confirm == "y" or confirm == "Y" then
-			vim.cmd("echo 'git add " .. vim.fn.expand("%") .. "'")
-			vim.cmd("silent !git add " .. vim.fn.expand("%"))
+			local cmd = { "git", "add", vim.fn.expand("%") }
+			local result = vim.fn.system(cmd)
+			if vim.v.shell_error ~= 0 then
+				vim.notify("Git add failed: " .. result, vim.log.levels.ERROR)
+			else
+				vim.notify("Git add succeeded: " .. vim.fn.expand("%"), vim.log.levels.INFO)
+			end
 		end
 	end, { desc = "git add current file" }
 )
@@ -60,8 +65,13 @@ vim.keymap.set("n", "<leader>gc",
 					vim.cmd("echo 'No message provided, aborted'")
 					return
 				end
-				vim.cmd("echo 'git commit -m \"" .. message .. "\"'")
-				vim.cmd("silent !git commit -m '" .. message .. "'")
+				local cmd = { "git", "commit", "-m", message }
+				local result = vim.fn.system(cmd)
+				if vim.v.shell_error ~= 0 then
+					vim.notify("Git commit failed: " .. result, vim.log.levels.ERROR)
+				else
+					vim.notify("Git commit succeeded: " .. message, vim.log.levels.INFO)
+				end
 			end
 		)
 	end, { desc = "git commit" }
@@ -73,7 +83,13 @@ vim.keymap.set("n", "<leader>gp",
 		local confirm = vim.fn.input("Push to origin? (Y/n): ")
 		if confirm == "" or confirm == "y" or confirm == "Y" then
 			-- vim.cmd("echo 'git push origin'")
-			vim.cmd("!git push origin")
+			local cmd = { "git", "push", "origin" }
+			local result = vim.fn.system(cmd)
+			if vim.v.shell_error ~= 0 then
+				vim.notify("Git push failed: " .. result, vim.log.levels.ERROR)
+			else
+				vim.notify("Git push succeeded", vim.log.levels.INFO)
+			end
 		end
 	end, { desc = "git push" }
 )
