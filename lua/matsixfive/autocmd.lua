@@ -15,14 +15,23 @@ autocmd("BufEnter", {
 })
 
 autocmd("BufEnter", {
-	callback = function()
-		if vim.bo.filetype ~= "oil" then
+	callback = function(opts)
+		if vim.bo[opts.buf].filetype ~= "oil" then
 			return
 		end
-
-		local line = vim.api.nvim_win_get_cursor(0)[1]
-		if line > 0 then
-			vim.cmd("normal! " .. 2 .. "G")
+		vim.print("moving cursor down")
+		if vim.fn.line(".") == 1 then
+			vim.print("moved down")
+			-- when oil opens it contains no lines and they are
+			-- filled in after so we need to wait and check until
+			-- there is a line to move to for a maximum of 100ms
+			for _ = 1, 10 do
+				if vim.fn.line("$") > 1 then
+					vim.api.nvim_win_set_cursor(0, { 2, 0 })
+					break
+				end
+				vim.wait(10)
+			end
 		end
 	end,
 	desc = "Move cursor to second line in oil",

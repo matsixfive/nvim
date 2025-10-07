@@ -15,6 +15,7 @@ return {
 		},
 		filetypes = {
 			oil = false,
+			typst = false,
 		},
 	}
 }

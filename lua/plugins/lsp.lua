@@ -4,11 +4,6 @@ vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename)
 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action)
 vim.keymap.set("n", "<leader>ff", function() vim.lsp.buf.format({ async = true }) end)
 vim.keymap.set("n", "<leader>dd", vim.diagnostic.open_float)
--- open blink completion
-vim.keymap.set("i", "<C-Space>", function()
-	print("Opening Blink Completion")
-	-- require("blink.cmp").open_completion()
-end, { desc = "Open Blink Completion" })
 
 return {
 	{
@@ -48,7 +43,15 @@ return {
 		---@module 'blink.cmp'
 		---@type blink.cmp.Config
 		opts = {
-			keymap = { preset = 'default' },
+			keymap = {
+				preset = 'default',
+				['<C-n>'] = {
+					function(cmp)
+						cmp.show()
+					end,
+					"select_next",
+				}
+			},
 			appearance = {
 				nerd_font_variant = 'mono',
 			},
@@ -56,10 +59,21 @@ return {
 				documentation = {
 					auto_show = true,
 				},
+				list = {
+					selection = {
+						preselect = true,
+						auto_insert = false,
+					}
+				},
+				auto_show = true,
+				ghost_text = {
+					enabled = true,
+				},
 			},
 			sources = {
 				default = {
 					'lsp',
+					'snippets',
 					'path',
 				},
 			},
