@@ -1,5 +1,6 @@
 vim.opt.number = true
 vim.opt.relativenumber = true
+vim.opt.signcolumn = "yes:1"
 
 local indent = 2
 vim.opt.tabstop = indent
