@@ -14,6 +14,36 @@ autocmd("BufEnter", {
 	desc = "Disable comment insertion on `o`",
 })
 
+local ns = vim.api.nvim_create_namespace("length_check")
+autocmd({ "BufEnter", "BufWritePost" }, {
+	callback = function()
+		local bufnr = vim.api.nvim_get_current_buf()
+		vim.diagnostic.reset(ns, bufnr)
+
+		local colorcolumnstr = vim.api.nvim_get_option_value("colorcolumn", { scope = "local" })
+		if colorcolumnstr == "" then
+			return
+		end
+
+		local colorcolumn = tonumber(colorcolumnstr)
+
+		local diagnostics = {}
+		for lnum, line in ipairs(vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)) do
+			if #line > colorcolumn then
+				table.insert(diagnostics, {
+					lnum = lnum - 1,
+					col = colorcolumn,
+					severity = vim.diagnostic.severity.INFO,
+					message = "Line exceeds " .. colorcolumnstr .. " characters",
+					source = "length_check",
+				})
+			end
+		end
+
+		vim.diagnostic.set(ns, bufnr, diagnostics, {})
+	end,
+})
+
 autocmd("BufEnter", {
 	callback = function(opts)
 		if vim.bo[opts.buf].filetype ~= "oil" then
