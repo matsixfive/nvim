@@ -19,9 +19,7 @@ autocmd("BufEnter", {
 		if vim.bo[opts.buf].filetype ~= "oil" then
 			return
 		end
-		vim.print("moving cursor down")
 		if vim.fn.line(".") == 1 then
-			vim.print("moved down")
 			-- when oil opens it contains no lines and they are
 			-- filled in after so we need to wait and check until
 			-- there is a line to move to for a maximum of 100ms
