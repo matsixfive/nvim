@@ -98,17 +98,17 @@ end
 
 vim.api.nvim_create_autocmd("User", {
 
-  pattern = "TelescopeFindPre",
-  callback = function()
-    vim.opt_local.winborder = "none"
-    vim.api.nvim_create_autocmd("WinLeave", {
-      once = true,
-      callback = function()
-        vim.opt_local.winborder = "rounded"
-      end,
+	pattern = "TelescopeFindPre",
+	callback = function()
+		vim.opt_local.winborder = "none"
+		vim.api.nvim_create_autocmd("WinLeave", {
+			once = true,
+			callback = function()
+				vim.opt_local.winborder = "rounded"
+			end,
 
-    })
-  end,
+		})
+	end,
 })
 
 return {
@@ -118,31 +118,7 @@ return {
 		opts = {
 			defaults = {
 				danamic_preview_title = true,
-				path_display = function(opts, path)
-					local tail = require("telescope.utils").path_tail(path)
-					local head = path:sub(1, #path - #tail - 1)
-					if tail == head then
-						return tail
-					end
-
-					local short_head = shorten_path_to_length(head, 70 - #tail)
-
-
-					path = string.format("%s/%s", short_head, tail)
-
-					local highlights = {
-						{
-							{ 0, #short_head + 1, },
-							"Comment",
-						},
-						{
-							{ #short_head + 1, #path, },
-							"Normal",
-						},
-					}
-
-					return path, highlights
-				end,
+				path_display = { "truncate", "filename_first" },
 				mappings = {
 					i = {
 						["<C-j>"] = require('telescope.actions').move_selection_next,
