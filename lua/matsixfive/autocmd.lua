@@ -15,8 +15,12 @@ autocmd("BufEnter", {
 })
 
 local ns = vim.api.nvim_create_namespace("length_check")
-autocmd({ "BufEnter", "BufWritePost" }, {
+autocmd({ "BufEnter", "BufWritePost", "TextChanged" }, {
 	callback = function()
+		if not vim.b.length_check then
+			return
+		end
+
 		local bufnr = vim.api.nvim_get_current_buf()
 		vim.diagnostic.reset(ns, bufnr)
 
@@ -42,27 +46,6 @@ autocmd({ "BufEnter", "BufWritePost" }, {
 
 		vim.diagnostic.set(ns, bufnr, diagnostics, {})
 	end,
-})
-
-autocmd("BufEnter", {
-	callback = function(opts)
-		if vim.bo[opts.buf].filetype ~= "oil" then
-			return
-		end
-		if vim.fn.line(".") == 1 then
-			-- when oil opens it contains no lines and they are
-			-- filled in after so we need to wait and check until
-			-- there is a line to move to for a maximum of 100ms
-			for _ = 1, 10 do
-				if vim.fn.line("$") > 1 then
-					vim.api.nvim_win_set_cursor(0, { 2, 0 })
-					break
-				end
-				vim.wait(10)
-			end
-		end
-	end,
-	desc = "Move cursor to second line in oil",
 })
 
 local uni_group = vim.api.nvim_create_augroup("Uni", { clear = true })
