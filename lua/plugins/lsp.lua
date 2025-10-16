@@ -23,14 +23,18 @@ return {
 			mason.setup()
 			mason_lspconfig.setup({
 				ensure_installed = {
-					"cssls",
-					"emmet_language_server",
-					"jdtls",
+					-- NVIM
 					"lua_ls",
-					"rust_analyzer",
-					"tailwindcss",
+
+					-- WEB
+					"cssls",
+					-- "tailwindcss",
+					"emmet_language_server",
 					"ts_ls",
-				}, -- add more as needed
+
+					"jdtls",
+					"rust_analyzer",
+				},
 				automatic_installation = true,
 			})
 		end,
