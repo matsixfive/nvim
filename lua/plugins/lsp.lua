@@ -11,37 +11,40 @@ return {
 		"neovim/nvim-lspconfig",
 		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
-			{ "williamboman/mason.nvim", build = ":MasonUpdate" },
-			"williamboman/mason-lspconfig.nvim",
+			{
+				"williamboman/mason-lspconfig.nvim",
+				opts = {
+					ensure_installed = {
+						-- NVIM
+						"lua_ls",
+
+						-- WEB
+						"cssls",
+						-- "tailwindcss",
+						"emmet_language_server",
+						"ts_ls",
+
+						-- UNI
+						"jdtls",
+						"tinymist",
+
+						-- OTHER
+						"rust_analyzer",
+					},
+					automatic_installation = true,
+				},
+				dependencies = {
+					"williamboman/mason.nvim",
+					build = ":MasonUpdate",
+					opts = true,
+				},
+			},
 			"Saghen/blink.cmp",
 		},
-		config = function()
-			local mason = require("mason")
-			local mason_lspconfig = require("mason-lspconfig")
-
-			-- Setup Mason
-			mason.setup()
-			mason_lspconfig.setup({
-				ensure_installed = {
-					-- NVIM
-					"lua_ls",
-
-					-- WEB
-					"cssls",
-					-- "tailwindcss",
-					"emmet_language_server",
-					"ts_ls",
-
-					"jdtls",
-					"rust_analyzer",
-				},
-				automatic_installation = true,
-			})
-		end,
 	},
 
 	{
-		'saghen/blink.cmp',
+		'Saghen/blink.cmp',
 		dependencies = { 'rafamadriz/friendly-snippets' },
 		version = '1.*',
 
