@@ -8,7 +8,6 @@ return {
 
 	-- ************ UI ************
 	'nvim-tree/nvim-web-devicons',
-	{ 'lewis6991/gitsigns.nvim', opts = {} },
 
 	{
 		'eandrju/cellular-automaton.nvim' ,
