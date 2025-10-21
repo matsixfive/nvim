@@ -2,6 +2,11 @@ return {
 	'nishigori/increment-activator',
 	config = function()
 		vim.g.increment_activator_filetype_candidates = {
+			["_"] = {
+				{ "up", "down" },
+				{ "left", "right" },
+				{ "first", "last" },
+			},
 			["css"] = {
 				{ "inside", "outside" },
 				{ "ltr", "rtl" },
