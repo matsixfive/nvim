@@ -50,13 +50,50 @@ autocmd({ "BufEnter", "BufWritePost", "TextChanged" }, {
 
 local uni_group = vim.api.nvim_create_augroup("Uni", { clear = true })
 
-autocmd({ "DirChanged", "VimEnter" }, {
+local check_uni = function()
+	-- any file in a directory named uni
+	local is_uni = vim.regex("/uni/"):match_str(vim.fn.getcwd())
+	return is_uni ~= nil
+end
+
+autocmd("VimEnter", {
+	callback = function()
+		local is_uni = check_uni()
+		vim.g.is_uni = is_uni
+
+		if is_uni then
+			vim.api.nvim_exec_autocmds("User", { pattern = "UniChanged", data = { is_uni = is_uni } })
+		end
+
+	end,
+	group = uni_group,
+	desc = "Disable copilot for university files",
+})
+
+autocmd("DirChanged", {
 	callback = function()
 		-- any file in a directory named uni
-		local is_uni = vim.regex("/uni/"):match_str(vim.fn.getcwd())
-		vim.g.is_uni = is_uni ~= nil
+		local old_is_uni = vim.g.is_uni
+		local is_uni = check_uni()
+		vim.g.is_uni = is_uni
 
-		if is_uni == nil then
+		if old_is_uni == is_uni then
+			return
+		end
+
+		vim.api.nvim_exec_autocmds("User", { pattern = "UniChanged", data = { is_uni = is_uni } })
+
+	end,
+	group = uni_group,
+	desc = "Disable copilot for university files",
+})
+
+
+autocmd("User", {
+	pattern = "UniChanged",
+	callback = function(args)
+		-- not in uni
+		if not args.is_uni then
 			-- source lua colorscheme config file
 			vim.defer_fn(function()
 				vim.api.nvim_command("colorscheme onedark")
@@ -76,5 +113,5 @@ autocmd({ "DirChanged", "VimEnter" }, {
 		end, 0)
 	end,
 	group = uni_group,
-	desc = "Disable copilot for university files",
+	desc = "Set indentation for university files",
 })

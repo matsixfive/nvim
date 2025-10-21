@@ -1,13 +1,9 @@
 return {
 	-- *********** Misc ***********
-	'nvim-lua/plenary.nvim',
-	'mbbill/undotree',
+	{ 'mbbill/undotree', lazy = true, cmd = 'UndotreeToggle' },
 
 	-- ********* Editing **********
 	'rstacruz/vim-closer',
-
-	-- ************ UI ************
-	'nvim-tree/nvim-web-devicons',
 
 	{
 		'eandrju/cellular-automaton.nvim' ,

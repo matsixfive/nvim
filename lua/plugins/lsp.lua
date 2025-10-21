@@ -6,13 +6,24 @@ vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action)
 vim.keymap.set("n", "<leader>ff", function() vim.lsp.buf.format({ async = true }) end)
 vim.keymap.set("n", "<leader>dd", vim.diagnostic.open_float)
 
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    if client and client.name == "jdtls" then
+      client.server_capabilities.semanticTokensProvider = nil
+    end
+  end,
+})
+
+
 return {
 	{
 		"neovim/nvim-lspconfig",
-		event = { "BufReadPre", "BufNewFile" },
+		event = { "VeryLazy" },
 		dependencies = {
 			{
 				"williamboman/mason-lspconfig.nvim",
+				lazy = true,
 				opts = {
 					ensure_installed = {
 						-- NVIM
@@ -35,11 +46,11 @@ return {
 				},
 				dependencies = {
 					"williamboman/mason.nvim",
+					lazy = true,
 					build = ":MasonUpdate",
 					opts = true,
 				},
 			},
-			"Saghen/blink.cmp",
 		},
 	},
 
@@ -47,6 +58,9 @@ return {
 		'Saghen/blink.cmp',
 		dependencies = { 'rafamadriz/friendly-snippets' },
 		version = '1.*',
+
+		lazy = true,
+		event = "InsertEnter",
 
 		---@module 'blink.cmp'
 		---@type blink.cmp.Config

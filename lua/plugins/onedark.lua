@@ -1,5 +1,9 @@
 return {
+	priority = 1000,
 	'navarasu/onedark.nvim',
+	init = function()
+		vim.cmd("colorscheme onedark")
+	end,
 	opts = {
 		style = 'darker',
 		colors = {

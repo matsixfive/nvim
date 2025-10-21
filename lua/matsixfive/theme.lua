@@ -87,7 +87,6 @@ vim.diagnostic.config({
 
 -- Customize highlight groups (optional but good practice)
 vim.cmd [[
-
   highlight DiagnosticUnderlineError gui=undercurl guisp=Red
   highlight DiagnosticUnderlineWarn  gui=undercurl guisp=Yellow
   highlight DiagnosticUnderlineInfo  gui=undercurl guisp=Blue
