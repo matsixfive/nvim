@@ -40,6 +40,9 @@ return {
 			["@character"] = { fg = '$light_green' },
 			["@string.escape"] = { fg = '$light_red' },
 			GitBlame = { bg = "$bg1", fg = "$fg_faint" },
+			GitGutterAdd = { fg = "$green" },
+			GitGutterChange = { fg = "$blue" },
+			GitGutterDelete = { fg = "$red" },
 		}
 	}
 }

@@ -33,7 +33,7 @@ return {
 
 			colors.gitSigns = {
 				add = '#0ab04d',
-				change = colors.orange,
+				change = colors.blue,
 				delete = colors.red
 			}
 
@@ -72,6 +72,18 @@ return {
 			highlights["GitBlame"] = {
 				bg = colors.bg_highlight,
 				fg = colors.fg_gutter
+			}
+
+			highlights["GitGutterAdd"] = {
+				fg = colors.gitSigns.add
+			}
+
+			highlights["GitGutterChange"] = {
+				fg = colors.gitSigns.change
+			}
+
+			highlights["GitGutterDelete"] = {
+				fg = colors.gitSigns.delete
 			}
 		end
 	}
