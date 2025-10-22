@@ -24,6 +24,8 @@ vim.opt.hlsearch = true
 vim.opt.incsearch = true
 vim.opt.showmode = false
 
+vim.opt.spelllang = "en_gb"
+
 vim.opt.scrolloff = 8
 
 vim.opt.updatetime = 50
