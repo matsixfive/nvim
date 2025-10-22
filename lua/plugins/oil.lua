@@ -64,7 +64,7 @@ return {
 	{
 		'refractalize/oil-git-status.nvim',
 		dependencies = { 'stevearc/oil.nvim' },
-		lazy = true,
+		event = "VeryLazy",
 		opts = {
 			show_ignored = true,
 		}

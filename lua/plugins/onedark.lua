@@ -1,11 +1,28 @@
+-- test comment
 return {
-	priority = 1000,
 	'navarasu/onedark.nvim',
+	priority = 1000,
 	init = function()
 		vim.cmd("colorscheme onedark")
+		vim.cmd [[
+			highlight DiagnosticUnderlineError gui=underline guisp=Red
+			highlight DiagnosticUnderlineWarn  gui=underline guisp=Yellow
+			highlight DiagnosticUnderlineInfo  gui=underline guisp=Blue
+			highlight DiagnosticUnderlineHint  gui=underline guisp=Green
+		]]
 	end,
 	opts = {
 		style = 'darker',
+		code_style = {
+			comments = 'italic',
+			keywords = 'bold',
+			functions = 'none',
+			strings = 'none',
+			variables = 'none',
+		},
+		diagnostics = {
+			undercurl = true,
+		},
 		colors = {
 			black = "#0e1013",
 			bg0 = "#191a1c",
@@ -39,14 +56,21 @@ return {
 			diff_text = "#274964",
 		},
 		highlights = {
-			ColorColumn = { bg = "$bg0_5" },
-			CursorLine = { bg = "$bg1" },
-			["@character"] = { fg = '$light_green' },
-			["@string.escape"] = { fg = '$light_red' },
-			GitBlame = { bg = "$bg1", fg = "$fg_faint" },
-			GitGutterAdd = { fg = "$green" },
-			GitGutterChange = { fg = "$blue" },
-			GitGutterDelete = { fg = "$red" },
+			ColorColumn              = { bg = "$bg0_5" },
+			CursorLine               = { bg = "$bg1" },
+
+			["@character"]           = { fg = '$light_green' },
+			["@string.escape"]       = { fg = '$light_red' },
+
+			DiagnosticUnderlineError = { fmt = "underline", sp = "$red" },
+			DiagnosticUnderlineWarn  = { fmt = "underline", sp = "$yellow" },
+			DiagnosticUnderlineInfo  = { fmt = "underline", sp = "$blue" },
+			DiagnosticUnderlineHint  = { fmt = "underline", sp = "$green" },
+
+			GitBlame                 = { bg = "$bg1", fg = "$fg_faint" },
+			GitGutterAdd             = { fg = "$green" },
+			GitGutterChange          = { fg = "$blue" },
+			GitGutterDelete          = { fg = "$red" },
 		}
 	}
 }

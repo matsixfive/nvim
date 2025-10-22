@@ -3,11 +3,7 @@ return {
 		'nvim-lualine/lualine.nvim',
 		dependencies = {
 			'nvim-tree/nvim-web-devicons',
-			{
-				'AndreM222/copilot-lualine',
-				lazy = true,
-			},
-			'arkav/lualine-lsp-progress'
+			-- 'arkav/lualine-lsp-progress'
 		},
 		opts = {
 			sections = {
@@ -31,37 +27,21 @@ return {
 				},
 				lualine_x = {
 					{
-						'lsp_progress',
-						display_components = {
-							'lsp_client_name',
-							'spinner',
-							'percentage',
-							'title'
+						'lsp_status',
+						icon = '', -- f013
+						symbols = {
+							spinner = { '⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏' },
+							done = '✓',
+							separator = ' ',
 						},
-						separators = {
-							lsp_client_name = { pre = '', post = '' },
-						},
-						spinner_symbols = {
-							'🌑 ',
-							'🌒 ',
-							'🌒 ',
-							'🌓 ',
-							'🌔 ',
-							'🌔 ',
-
-							'🌕 ',
-							'🌖 ',
-							'🌖 ',
-							'🌗 ',
-							'🌘 ',
-							'🌘 ',
-						},
-						timer = {
-							spinner = 100,
-						}
+						ignore_lsp = { "copilot" },
 					},
 					{
 						'copilot',
+						cond = function()
+							-- only show if copilot is loaded
+							return vim.tbl_get(require("lazy.core.config"), "plugins", "copilot.lua", "_", "loaded") ~= nil
+						end,
 						symbols = {
 							status = {
 								icons = {
@@ -76,7 +56,7 @@ return {
 									sleep = "#AEB7D0",
 									disabled = "#6272A4",
 									warning = "#FFB86C",
-									unknown = "#FF5555"
+									unknown = "#AEB7D0",
 								}
 							},
 						},

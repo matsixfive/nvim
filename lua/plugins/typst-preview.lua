@@ -12,10 +12,14 @@ return {
 	"chomosuke/typst-preview.nvim",
 	lazy = true,
 	version = "1.*",
+	ft = { "typst" },
+	commands = { "TypstPreviewToggle", "TypstPreviewStart", "TypstPreviewStop" },
 	opts = {
 		debug = true,
 		dependencies_bin = {
-			dependencies_bin = { ['tinymist'] = os.getenv("HOME") .. '/.local/share/nvim/mason/bin/tinymist' }
+			dependencies_bin = {
+				['tinymist'] = os.getenv("HOME") .. '/.local/share/nvim/mason/bin/tinymist',
+			}
 		}
 	},
 }

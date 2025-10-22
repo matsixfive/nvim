@@ -1,11 +1,11 @@
 -- Show capture group for text under current cursor position
-vim.keymap.set("n", "<C-e>",
-	function()
-		local result = vim.treesitter.get_captures_at_cursor(0)
-		vim.print(result)
-	end,
-	{ noremap = true, silent = false }
-)
+-- vim.keymap.set("n", "<C-e>",
+-- 	function()
+-- 		local result = vim.treesitter.get_captures_at_cursor(0)
+-- 		vim.print(result)
+-- 	end,
+-- 	{ noremap = true, silent = false }
+-- )
 
 return {
 	'nvim-treesitter/nvim-treesitter',

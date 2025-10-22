@@ -62,9 +62,8 @@ autocmd("VimEnter", {
 		vim.g.is_uni = is_uni
 
 		if is_uni then
-			vim.api.nvim_exec_autocmds("User", { pattern = "UniChanged", data = { is_uni = is_uni } })
+			vim.api.nvim_exec_autocmds("User", { pattern = "UniEnter" })
 		end
-
 	end,
 	group = uni_group,
 	desc = "Disable copilot for university files",
@@ -72,7 +71,6 @@ autocmd("VimEnter", {
 
 autocmd("DirChanged", {
 	callback = function()
-		-- any file in a directory named uni
 		local old_is_uni = vim.g.is_uni
 		local is_uni = check_uni()
 		vim.g.is_uni = is_uni
@@ -81,8 +79,11 @@ autocmd("DirChanged", {
 			return
 		end
 
-		vim.api.nvim_exec_autocmds("User", { pattern = "UniChanged", data = { is_uni = is_uni } })
-
+		if is_uni then
+			vim.api.nvim_exec_autocmds("User", { pattern = "UniEnter" })
+		else
+			vim.api.nvim_exec_autocmds("User", { pattern = "UniLeave" })
+		end
 	end,
 	group = uni_group,
 	desc = "Disable copilot for university files",
@@ -90,20 +91,8 @@ autocmd("DirChanged", {
 
 
 autocmd("User", {
-	pattern = "UniChanged",
-	callback = function(args)
-		-- not in uni
-		if not args.is_uni then
-			-- source lua colorscheme config file
-			vim.defer_fn(function()
-				vim.api.nvim_command("colorscheme onedark")
-			end, 0)
-
-			require("copilot.command").enable()
-
-			return
-		end
-
+	pattern = "UniEnter",
+	callback = function()
 		require("copilot.command").disable()
 		require("gitblame").enable()
 
@@ -114,4 +103,19 @@ autocmd("User", {
 	end,
 	group = uni_group,
 	desc = "Set indentation for university files",
+})
+
+autocmd("User", {
+	pattern = "UniLeave",
+	callback = function()
+		-- source tokyonight colorscheme
+		vim.defer_fn(function()
+			require("tokyonight")
+			vim.api.nvim_command("colorscheme tokyonight")
+		end, 0)
+
+		require("copilot.command").disable()
+	end,
+	group = uni_group,
+	desc = "Set indentation for non-university files",
 })
