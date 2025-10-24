@@ -94,9 +94,18 @@ return {
 			},
 			sources = {
 				default = {
+					'lazydev',
 					'lsp',
 					'snippets',
 					'path',
+				},
+				providers = {
+					lazydev = {
+						name = "LazyDev",
+						module = "lazydev.integrations.blink",
+						-- make lazydev completions top priority (see `:h blink.cmp`)
+						score_offset = 100,
+					},
 				},
 			},
 			snippets = { preset = 'luasnip' },
