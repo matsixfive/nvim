@@ -1,22 +1,19 @@
 return {
 	'Saghen/blink.cmp',
+	version = '1.*',
+	lazy = true,
+	event = "InsertEnter",
+
 	dependencies = {
-		-- 'rafamadriz/friendly-snippets',
 		{
 			"L3MON4D3/LuaSnip",
 			version = "v2.*",
-			-- install jsregexp (optional!).
-			-- build = "make install_jsregexp"
 			lazy = true,
 			config = function()
 				require("luasnip.loaders.from_snipmate").lazy_load()
 			end,
 		}
 	},
-	version = '1.*',
-
-	lazy = true,
-	event = "InsertEnter",
 
 	opts = {
 		keymap = {
@@ -50,9 +47,18 @@ return {
 		},
 		sources = {
 			default = {
+				'lazydev',
 				'lsp',
 				'snippets',
 				'path',
+			},
+			providers = {
+				lazydev = {
+					name = "LazyDev",
+					module = "lazydev.integrations.blink",
+					-- make lazydev completions top priority (see `:h blink.cmp`)
+					score_offset = 100,
+				},
 			},
 		},
 		snippets = { preset = 'luasnip' },

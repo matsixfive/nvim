@@ -3,7 +3,7 @@ return {
 	ft = "lua",   -- only load on lua files
 	opts = {
 		library = {
-			{ path = "~/.config/nvim/lua", words = { "require" } },
+			{ path = "~/.config/nvim"  },
 			{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
 		},
 	},

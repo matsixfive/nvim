@@ -25,6 +25,7 @@ return {
 				"williamboman/mason-lspconfig.nvim",
 				lazy = true,
 				opts = {
+					automatic_installation = true,
 					ensure_installed = {
 						-- NVIM
 						"lua_ls",
@@ -41,8 +42,8 @@ return {
 
 						-- OTHER
 						"rust_analyzer",
+						"hls",
 					},
-					automatic_installation = true,
 				},
 				dependencies = {
 					"williamboman/mason.nvim",
@@ -53,74 +54,4 @@ return {
 			},
 		},
 	},
-
-	{
-		'Saghen/blink.cmp',
-		-- dependencies = { 'rafamadriz/friendly-snippets' },
-		version = '1.*',
-
-		lazy = true,
-		event = "InsertEnter",
-
-		opts = {
-			keymap = {
-				preset = 'default',
-				['<C-n>'] = {
-					function(cmp)
-						cmp.show()
-					end,
-					"select_next",
-				}
-			},
-			appearance = {
-				nerd_font_variant = 'mono',
-			},
-			completion = {
-				documentation = {
-					auto_show = true,
-				},
-				list = {
-					selection = {
-						preselect = true,
-						auto_insert = false,
-					}
-				},
-				menu = {
-					auto_show = true,
-				},
-				ghost_text = {
-					enabled = false,
-				},
-			},
-			sources = {
-				default = {
-					'lazydev',
-					'lsp',
-					'snippets',
-					'path',
-				},
-				providers = {
-					lazydev = {
-						name = "LazyDev",
-						module = "lazydev.integrations.blink",
-						-- make lazydev completions top priority (see `:h blink.cmp`)
-						score_offset = 100,
-					},
-				},
-			},
-			snippets = { preset = 'luasnip' },
-			fuzzy = {
-				implementation = "prefer_rust_with_warning",
-			},
-			signature = {
-				enabled = true,
-				window = {
-					show_documentation = false,
-				},
-			},
-		},
-		opts_extend = {
-			"sources.default",
-		}
-	}
 }
