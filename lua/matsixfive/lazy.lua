@@ -25,5 +25,10 @@ require("lazy").setup({
 	rocks = {
 		hererocks = true,
 		server = "https://lumen-oss.github.io/rocks-binaries/",
-	}
+	},
+	dev = {
+    path = "~/dev",
+    patterns = { "matsixfive" },
+    fallback = false,
+  },
 })
