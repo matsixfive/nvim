@@ -61,7 +61,7 @@ return {
 		lazy = true,
 		opts = {
 			defaults = {
-				danamic_preview_title = true,
+				dynamic_preview_title = true,
 				path_display = { "truncate", "filename_first" },
 				mappings = {
 					i = {
