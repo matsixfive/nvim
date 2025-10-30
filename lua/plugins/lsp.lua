@@ -15,6 +15,17 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end,
 })
 
+vim.lsp.enable("ahk2_ls")
+vim.lsp.config("ahk2_ls", {
+	cmd = { "node", os.getenv("HOME") .. "/src/vscode-autohotkey2-lsp/server/dist/server.js", "--stdio" }, -- adjust path
+	filetypes = { "ahk", "autohotkey", "ah2" },
+	-- init_options = {
+	-- 	InterpreterPath = ""
+	-- },
+	single_file_support = true,
+	flags = { debounce_text_changes = 500 },
+})
+
 return {
 	{
 		"neovim/nvim-lspconfig",
