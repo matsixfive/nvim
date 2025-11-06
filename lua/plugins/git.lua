@@ -1,20 +1,20 @@
 return {
 	-- cond = function()
 	-- 	-- file is in a git dir
-	-- 	local _, ret, _ = require("telescope.utils").get_os_command_output({ 'git', 'rev-parse', '--is-inside-work-tree' })
+	-- 	local _, ret, _ = require("telescope.utils").get_os_command_output({ "git", "rev-parse", "--is-inside-work-tree" })
 	-- 	return ret == 0
 	-- end,
 	{
-		'airblade/vim-gitgutter',
+		"airblade/vim-gitgutter",
 		event = { "VeryLazy" },
 		init = function()
-			vim.g.gitgutter_sign_added = '┃'
-			vim.g.gitgutter_sign_modified = '┃'
-			vim.g.gitgutter_sign_removed = '-'
+			vim.g.gitgutter_sign_added = "┃"
+			vim.g.gitgutter_sign_modified = "┃"
+			vim.g.gitgutter_sign_removed = "-"
 		end,
 	},
 	{
-		'f-person/git-blame.nvim',
+		"f-person/git-blame.nvim",
 		lazy = true,
 		opts = {
 			enabled = false,
@@ -25,7 +25,7 @@ return {
 			highlight_group = "GitBlame"
 		},
 		keys = {
-			{ "<leader>gb", function() require('gitblame').toggle() end, desc = "Toggle Git Blame" },
+			{ "<leader>gb", function() require("gitblame").toggle() end, desc = "Toggle Git Blame" },
 		},
 	},
 	{
@@ -40,7 +40,7 @@ return {
 			{
 				"<leader>gB",
 				function()
-					require('blame')
+					require("blame")
 					vim.cmd("BlameToggle")
 				end,
 				desc = "Toggle Blame.nvim"

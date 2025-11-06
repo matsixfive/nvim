@@ -22,7 +22,7 @@ vim.g.increment_activator_filetype_candidates = {
 }
 
 return {
-	'nishigori/increment-activator',
+	"nishigori/increment-activator",
 	keys = {
 		"<C-a>",
 		"<C-x>",

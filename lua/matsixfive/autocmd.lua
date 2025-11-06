@@ -98,7 +98,7 @@ autocmd("User", {
 
 		vim.defer_fn(function()
 			require("tokyonight")
-			vim.api.nvim_command("colorscheme tokyonight")
+			vim.cmd.colorscheme("tokyonight")
 		end, 0)
 	end,
 	group = uni_group,
@@ -111,7 +111,7 @@ autocmd("User", {
 		-- source tokyonight colorscheme
 		vim.defer_fn(function()
 			require("tokyonight")
-			vim.api.nvim_command("colorscheme tokyonight")
+			vim.cmd.colorscheme("tokyonight")
 		end, 0)
 
 		require("copilot.command").disable()

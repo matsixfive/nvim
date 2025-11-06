@@ -1,5 +1,5 @@
 return {
-	'mbbill/undotree',
+	"mbbill/undotree",
 	lazy = true,
-	cmd = 'UndotreeToggle',
+	cmd = "UndotreeToggle",
 }

@@ -15,7 +15,7 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("n", "J", "mzJ`z")
 
 -- quit all (for difftool)
-vim.keymap.set('n', 'ZZ', ':qa<CR>', { noremap = true, silent = true })
+vim.keymap.set("n", "ZZ", ":qa<CR>", { noremap = true, silent = true })
 
 -- select last edited text
 vim.keymap.set("n", "gV", "`[v`]")
@@ -85,11 +85,7 @@ vim.keymap.set("n", "<leader>gp",
 			-- vim.cmd("echo 'git push origin'")
 			local cmd = { "git", "push", "origin" }
 			local result = vim.fn.system(cmd)
-			if vim.v.shell_error ~= 0 then
-				vim.notify("Git push failed: " .. result, vim.log.levels.ERROR)
-			else
-				vim.notify("Git push succeeded", vim.log.levels.INFO)
-			end
+			
 		end
 	end, { desc = "git push" }
 )

@@ -1,9 +1,9 @@
 return {
-	'zbirenbaum/copilot.lua',
+	"zbirenbaum/copilot.lua",
 	lazy = true,
-	event = 'InsertEnter',
+	event = "InsertEnter",
 	dependencies = {
-		'AndreM222/copilot-lualine',
+		"AndreM222/copilot-lualine",
 	},
 	opts = {
 		panel = {

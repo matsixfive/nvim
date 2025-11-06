@@ -1,6 +1,6 @@
 return {
 	{
-		'stevearc/oil.nvim',
+		"stevearc/oil.nvim",
 		opts = {
 			-- default_line = 2,
 			columns = {
@@ -62,8 +62,8 @@ return {
 		end
 	},
 	{
-		'refractalize/oil-git-status.nvim',
-		dependencies = { 'stevearc/oil.nvim' },
+		"refractalize/oil-git-status.nvim",
+		dependencies = { "stevearc/oil.nvim" },
 		event = "VeryLazy",
 		opts = {
 			show_ignored = true,

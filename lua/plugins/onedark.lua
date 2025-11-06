@@ -1,24 +1,18 @@
 -- test comment
 return {
-	'navarasu/onedark.nvim',
+	"navarasu/onedark.nvim",
 	priority = 1000,
 	init = function()
-		vim.cmd("colorscheme onedark")
-		vim.cmd [[
-			highlight DiagnosticUnderlineError gui=underline guisp=Red
-			highlight DiagnosticUnderlineWarn  gui=underline guisp=Yellow
-			highlight DiagnosticUnderlineInfo  gui=underline guisp=Blue
-			highlight DiagnosticUnderlineHint  gui=underline guisp=Green
-		]]
+		vim.cmd.colorscheme("onedark")
 	end,
 	opts = {
-		style = 'darker',
+		style = "darker",
 		code_style = {
-			comments = 'italic',
-			keywords = 'bold',
-			functions = 'none',
-			strings = 'none',
-			variables = 'none',
+			comments = "italic",
+			keywords = "bold",
+			functions = "none",
+			strings = "none",
+			variables = "none",
 		},
 		diagnostics = {
 			undercurl = true,
@@ -59,8 +53,8 @@ return {
 			ColorColumn              = { bg = "$bg0_5" },
 			CursorLine               = { bg = "$bg1" },
 
-			["@character"]           = { fg = '$light_green' },
-			["@string.escape"]       = { fg = '$light_red' },
+			["@character"]           = { fg = "$light_green" },
+			["@string.escape"]       = { fg = "$light_red" },
 
 			DiagnosticUnderlineError = { fmt = "underline", sp = "$red" },
 			DiagnosticUnderlineWarn  = { fmt = "underline", sp = "$yellow" },

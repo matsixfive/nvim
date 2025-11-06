@@ -18,7 +18,7 @@ return {
 		debug = true,
 		dependencies_bin = {
 			dependencies_bin = {
-				['tinymist'] = os.getenv("HOME") .. '/.local/share/nvim/mason/bin/tinymist',
+				["tinymist"] = os.getenv("HOME") .. "/.local/share/nvim/mason/bin/tinymist",
 			}
 		}
 	},

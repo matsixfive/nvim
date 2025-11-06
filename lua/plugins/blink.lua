@@ -1,6 +1,6 @@
 return {
-	'Saghen/blink.cmp',
-	version = '1.*',
+	"Saghen/blink.cmp",
+	version = "1.*",
 	lazy = true,
 	event = "InsertEnter",
 
@@ -17,8 +17,8 @@ return {
 
 	opts = {
 		keymap = {
-			preset = 'default',
-			['<C-n>'] = {
+			preset = "default",
+			["<C-n>"] = {
 				function(cmp)
 					cmp.show()
 				end,
@@ -26,7 +26,7 @@ return {
 			}
 		},
 		appearance = {
-			nerd_font_variant = 'mono',
+			nerd_font_variant = "mono",
 		},
 		completion = {
 			documentation = {
@@ -47,10 +47,10 @@ return {
 		},
 		sources = {
 			default = {
-				'lazydev',
-				'lsp',
-				'snippets',
-				'path',
+				"lazydev",
+				"lsp",
+				"snippets",
+				"path",
 			},
 			providers = {
 				lazydev = {
@@ -61,7 +61,7 @@ return {
 				},
 			},
 		},
-		snippets = { preset = 'luasnip' },
+		snippets = { preset = "luasnip" },
 		fuzzy = {
 			implementation = "prefer_rust_with_warning",
 		},

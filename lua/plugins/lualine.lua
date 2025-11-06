@@ -1,19 +1,19 @@
 return {
 	{
-		'nvim-lualine/lualine.nvim',
+		"nvim-lualine/lualine.nvim",
 		dependencies = {
-			'nvim-tree/nvim-web-devicons',
-			-- 'arkav/lualine-lsp-progress'
+			"nvim-tree/nvim-web-devicons",
+			-- "arkav/lualine-lsp-progress"
 		},
 		opts = {
 			sections = {
-				lualine_a = { 'mode' },
+				lualine_a = { "mode" },
 				lualine_b = {
-					'branch',
-					'diff',
+					"branch",
+					"diff",
 					{
-						'diagnostics',
-						sources = { 'nvim_lsp' },
+						"diagnostics",
+						sources = { "nvim_lsp" },
 						symbols = {
 							error = " ",
 							warn = " ",
@@ -23,21 +23,21 @@ return {
 					}
 				},
 				lualine_c = {
-					'filename',
+					"filename",
 				},
 				lualine_x = {
 					{
-						'lsp_status',
-						icon = '', -- f013
+						"lsp_status",
+						icon = "", -- f013
 						symbols = {
-							spinner = { '⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏' },
-							done = '✓',
-							separator = ' ',
+							spinner = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" },
+							done = "✓",
+							separator = " ",
 						},
 						ignore_lsp = { "copilot" },
 					},
 					{
-						'copilot',
+						"copilot",
 						cond = function()
 							-- only show if copilot is loaded
 							return vim.tbl_get(require("lazy.core.config"), "plugins", "copilot.lua", "_", "loaded") ~= nil
@@ -63,11 +63,11 @@ return {
 						show_colors = true,
 						show_loading = true,
 					},
-					'encoding',
-					'fileformat',
+					"encoding",
+					"fileformat",
 				},
-				lualine_y = { 'filetype' },
-				lualine_z = { 'location' }
+				lualine_y = { "filetype" },
+				lualine_z = { "location" }
 			},
 		},
 	},
