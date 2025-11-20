@@ -15,6 +15,29 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end,
 })
 
+local orig = vim.lsp.handlers["textDocument/publishDiagnostics"]
+
+vim.lsp.handlers["textDocument/publishDiagnostics"] = function(err, result, ctx, config)
+	if result and result.diagnostics then
+		local filtered = {}
+
+		for _, diagnostic in ipairs(result.diagnostics) do
+			if (diagnostic.message:match("^%s*TODO")) then
+				goto continue
+			end
+
+			table.insert(filtered, diagnostic)
+
+			::continue::
+		end
+
+		result.diagnostics = filtered
+	end
+
+	orig(err, result, ctx, config)
+end
+
+
 vim.lsp.enable("ahk2_ls")
 vim.lsp.config("ahk2_ls", {
 	cmd = { "node", os.getenv("HOME") .. "/src/vscode-autohotkey2-lsp/server/dist/server.js", "--stdio" }, -- adjust path
