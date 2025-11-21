@@ -40,7 +40,7 @@ end
 
 vim.lsp.enable("ahk2_ls")
 vim.lsp.config("ahk2_ls", {
-	cmd = { "node", os.getenv("HOME") .. "/src/vscode-autohotkey2-lsp/server/dist/server.js", "--stdio" }, -- adjust path
+	cmd = { "node", vim.uv.os_homedir() .. "/src/vscode-autohotkey2-lsp/server/dist/server.js", "--stdio" }, -- adjust path
 	filetypes = { "ahk", "autohotkey", "ah2" },
 	-- init_options = {
 	-- 	InterpreterPath = ""
