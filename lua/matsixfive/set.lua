@@ -17,7 +17,7 @@ vim.opt.autoread = true
 
 vim.opt.backup = false
 vim.opt.backupcopy = "yes"
-vim.opt.undodir = vim.loop.os_homedir() .. "/.vim/undodir"
+vim.opt.undodir = vim.uv.os_homedir() .. "/.vim/undodir"
 vim.opt.undofile = true
 
 vim.opt.hlsearch = true
@@ -33,7 +33,7 @@ vim.opt.updatetime = 50
 vim.g.ftplugin_sql_omni_key = "<leader>sql"
 
 -- wraps zsh to run as interactive shell for things like `:!`
-local wrapper_path = os.getenv("HOME") .. "/.local/bin/nvim_zsh_wrapper"
+local wrapper_path = vim.uv.os_homedir() .. "/.local/bin/nvim_zsh_wrapper"
 if vim.fn.filereadable(wrapper_path) == 1 then
 	vim.opt.shell = wrapper_path
 end

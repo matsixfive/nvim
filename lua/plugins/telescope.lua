@@ -41,20 +41,6 @@ vim.keymap.set("n", "<C-p>",
 	end, { desc = "Telescope git files" }
 )
 
--- vim.api.nvim_create_autocmd("User", {
--- 	pattern = "TelescopeFindPre",
--- 	callback = function()
--- 		vim.opt_local.winborder = "none"
--- 		vim.api.nvim_create_autocmd("WinLeave", {
--- 			once = true,
--- 			callback = function()
--- 				vim.opt_local.winborder = "rounded"
--- 			end,
---
--- 		})
--- 	end,
--- })
-
 return {
 	{
 		"nvim-telescope/telescope.nvim",
