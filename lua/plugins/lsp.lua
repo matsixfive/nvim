@@ -61,21 +61,21 @@ return {
 					automatic_installation = true,
 					ensure_installed = {
 						-- NVIM
-						"lua_ls",
+						-- "lua_ls",
 
 						-- WEB
-						"cssls",
+						-- "cssls",
 						-- "tailwindcss",
-						"emmet_language_server",
-						"ts_ls",
+						-- "emmet_language_server",
+						-- "ts_ls",
 
 						-- UNI
-						"jdtls",
-						"tinymist",
+						-- "jdtls",
+						-- "tinymist",
 
 						-- OTHER
-						"rust_analyzer",
-						"hls",
+						-- "rust_analyzer",
+						-- "hls",
 					},
 				},
 				dependencies = {
