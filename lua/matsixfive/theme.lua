@@ -57,7 +57,7 @@ vim.diagnostic.config({
 		prefix = "",
 		suffix = " ",
 		format = function(diagnostic)
-			diagnostic.message = diagnostic.message:gsub("\n", " ⏎ ")
+			-- diagnostic.message = diagnostic.message:gsub("\n", " ⏎ ")
 			if diagnostic.message == "Undefined global `vim`." then
 				return
 						" Your life is nothing, you serve zero purpose, " ..
