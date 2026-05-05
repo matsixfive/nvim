@@ -1,7 +1,7 @@
 return {
     {
         "nvim-telescope/telescope.nvim",
-        dependencies = { "nvim-lua/plenary.nvim" },
+        dependencies = { "nvim-lua/plenary.nvim", "nvim-telescope/telescope-ui-select.nvim" },
         -- This tells lazy.nvim: "Only load this plugin when I press one of these keys"
         keys = {
             { "<leader>vh", "<cmd>Telescope help_tags<cr>", desc = "Telescope vim help" },
@@ -44,6 +44,7 @@ return {
             }
 
             telescope.setup(opts)
+            telescope.load_extension("ui-select")
         end,
         opts = {
             defaults = {
@@ -51,13 +52,5 @@ return {
                 path_display = { "truncate", "filename_first" },
             },
         },
-    },
-    {
-        "nvim-telescope/telescope-ui-select.nvim",
-        -- Ensure ui-select only loads when telescope itself loads
-        event = "DeferredConfig", 
-        config = function()
-            require("telescope").load_extension("ui-select")
-        end,
     },
 }

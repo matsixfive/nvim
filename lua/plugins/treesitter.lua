@@ -12,7 +12,8 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
 		main = "nvim-treesitter.config",
-		lazy = false,
+		lazy = true,
+		event = "BufReadPost",
 		config = function()
 			require("nvim-treesitter.configs").setup {
 				ensure_installed = {

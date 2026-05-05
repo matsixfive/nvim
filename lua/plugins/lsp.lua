@@ -52,7 +52,7 @@ vim.lsp.config("ahk2_ls", {
 return {
 	{
 		"neovim/nvim-lspconfig",
-		event = { "VeryLazy" },
+		event = { "BufReadPost" },
 		dependencies = {
 			{
 				"williamboman/mason-lspconfig.nvim",
