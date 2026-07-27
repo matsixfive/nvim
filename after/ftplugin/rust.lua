@@ -1,4 +1,4 @@
-local ts_utils = require("nvim-treesitter.ts_utils")
+
 
 local function delete_range(buf, start_line, start_col, end_line, end_col)
 	end_col = end_col - 1
@@ -17,7 +17,7 @@ local function delete_range(buf, start_line, start_col, end_line, end_col)
 end
 
 vim.keymap.set("n", "<leader>m", function()
-	local node = ts_utils.get_node_at_cursor()
+	local node = vim.treesitter.get_node()
 
 	if not node then
 		return
