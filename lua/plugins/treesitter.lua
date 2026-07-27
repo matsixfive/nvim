@@ -11,6 +11,7 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
+		branch = "main",
 		main = "nvim-treesitter.config",
 		lazy = true,
 		event = "BufReadPost",
