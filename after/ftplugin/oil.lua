@@ -1,5 +1,23 @@
 local oil = require("oil")
 
+vim.api.nvim_set_hl(0, "OilModRs", { bold = true })
+local ns = vim.api.nvim_create_namespace("oil_mod_rs")
+local function highlight_mod_rs()
+	local buf = vim.api.nvim_get_current_buf()
+	vim.api.nvim_buf_clear_namespace(buf, ns, 0, -1)
+	local lines = vim.api.nvim_buf_get_lines(buf, 0, -1, false)
+	for i, line in ipairs(lines) do
+		if line:find("mod%.rs") then
+			vim.api.nvim_buf_add_highlight(buf, ns, "OilModRs", i - 1, 0, -1)
+		end
+	end
+end
+vim.api.nvim_create_autocmd("CursorMoved", {
+	buffer = 0,
+	callback = highlight_mod_rs,
+})
+highlight_mod_rs()
+
 local function git_add(path)
 	local cmd = { "git", "add", path }
 	print(vim.inspect(cmd))
