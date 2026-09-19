@@ -63,11 +63,11 @@ return {
 						show_colors = true,
 						show_loading = true,
 					},
-					"encoding",
-					"fileformat",
+					'fileformat',
+					'encoding',
 				},
-				lualine_y = { "filetype" },
-				lualine_z = { "location" }
+				lualine_y = { 'filetype' },
+				lualine_z = { 'location' }
 			},
 		},
 	},
