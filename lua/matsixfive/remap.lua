@@ -30,6 +30,8 @@ vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
 
+vim.keymap.set("n", "<leader>o", "<CMD>Open %<CR>", { desc = "Open current file" })
+
 -- (in/de)crement digit under cursor
 vim.keymap.set("n", "<leader>a", "a <ESC>h<C-a>lxh")
 vim.keymap.set("n", "<leader>x", "a <ESC>h<C-x>lxh")
