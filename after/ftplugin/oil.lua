@@ -1,5 +1,15 @@
 local oil = require("oil")
 
+vim.keymap.set("n", "<leader>o", function()
+	local entry = oil.get_cursor_entry()
+	if not entry then
+		vim.notify("No entry under cursor", vim.log.levels.WARN)
+		return
+	end
+	local path = oil.get_current_dir() .. entry.name
+	vim.ui.open(path)
+end, { desc = "Open file" })
+
 vim.api.nvim_set_hl(0, "OilModRs", { bold = true })
 local ns = vim.api.nvim_create_namespace("oil_mod_rs")
 local function highlight_mod_rs()
