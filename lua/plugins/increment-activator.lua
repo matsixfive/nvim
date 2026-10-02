@@ -18,7 +18,11 @@ vim.g.increment_activator_filetype_candidates = {
 		{ "block",         "inline-block" },
 		{ "space-between", "space-around", "space-evenly" },
 		{ "visible",       "hidden" },
-	}
+	},
+	["lean"] = {
+		{ "left", "right" },
+		{ "#check", "#eval" },
+	},
 }
 
 return {
