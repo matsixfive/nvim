@@ -1,9 +1,27 @@
-vim.keymap.set("n", "<leader>tt", function() require("neotest").run.run() end, { desc = "Run nearest test" })
-vim.keymap.set("n", "<leader>td", function() require("neotest").run.run({ strategy = "dap" }) end,
-	{ desc = "Debug nearest test" })
-vim.keymap.set("n", "<leader>ta", function() require("neotest").run.run(vim.fn.expand("%")) end,
-	{ desc = "Run all tests in current file" })
-vim.keymap.set("n", "<leader>ts", function() require("neotest").summary.toggle() end, { desc = "Toggle test summary" })
+vim.keymap.set("n", "<leader>bp", function()
+	require("dap").toggle_breakpoint()
+end, { desc = "Toggle Breakpoint" })
+
+-- while debugging, use the following keybindings to control the debugger:
+-- Down: Step over
+-- Right: Step into
+-- Left: Step out
+-- Up: Restart frame
+vim.keymap.set("n", "<Down>", function()
+	require("dap").step_over()
+end, { desc = "Step Over" })
+vim.keymap.set("n", "<Right>", function()
+	require("dap").step_into()
+end, { desc = "Step Into" })
+vim.keymap.set("n", "<Left>", function()
+	require("dap").step_out()
+end, { desc = "Step Out" })
+vim.keymap.set("n", "<Up>", function()
+	require("dap").continue()
+end, { desc = "Continue" })
+
+-- make breakpoints look like red dots
+vim.fn.sign_define("DapBreakpoint", { text = "●", texthl = "Error", linehl = "", numhl = "" })
 
 -- The `java-debug-adapter` mason package ships an OSGi *bundle*, not a runnable jar,
 -- so it cannot be spawned with `java -jar`. jdtls has to load it instead, which it
@@ -24,12 +42,9 @@ else
 	end)
 end
 
--- `:Neotest attach` when opening a java file
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "java",
 	callback = function()
-		require("neotest").run.attach()
-
 		-- Registers `dap.adapters.java`. The `java-debug-adapter` mason package ships an
 		-- OSGi *bundle* with no `Main-Class`, so `java -jar` on it always exits 1. The only
 		-- supported way to run it is inside jdtls, which is asked to start a debug server
@@ -66,29 +81,14 @@ vim.api.nvim_create_autocmd("FileType", {
 
 return {
 	{
-		"rcasia/neotest-java",
-		ft = "java",
+		"mfussenegger/nvim-dap",
 		dependencies = {
-			"mfussenegger/nvim-dap",        -- for debugging (optional)
-			"rcarriga/nvim-dap-ui",         -- recommended
-			"theHamsta/nvim-dap-virtual-text", -- recommended
-		},
-	},
-	{
-		"nvim-neotest/neotest",
-		dependencies = {
-			"nvim-neotest/nvim-nio",
-			"nvim-lua/plenary.nvim",
-			"nvim-treesitter/nvim-treesitter",
+			"rcarriga/nvim-dap-ui",
+			"theHamsta/nvim-dap-virtual-text",
 		},
 		config = function()
-			require("neotest").setup({
-				adapters = {
-					require("neotest-java")({
-						-- Optional configuration here
-					}),
-				},
-			})
+			require("dapui").setup()
+			require("nvim-dap-virtual-text").setup({})
 		end,
 	},
 }
