@@ -5,65 +5,6 @@ vim.keymap.set("n", "<leader>ta", function() require("neotest").run.run(vim.fn.e
 	{ desc = "Run all tests in current file" })
 vim.keymap.set("n", "<leader>ts", function() require("neotest").summary.toggle() end, { desc = "Toggle test summary" })
 
--- The `java-debug-adapter` mason package ships an OSGi *bundle*, not a runnable jar,
--- so it cannot be spawned with `java -jar`. jdtls has to load it instead, which it
--- does for every jar listed in `init_options.bundles`. Glob the version so mason
--- upgrades don't break this.
-local java_debug_bundle = vim.fn.glob(
-	vim.fn.stdpath("data")
-		.. "/mason/packages/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar",
-	false,
-	true
-)[1]
-
-if java_debug_bundle then
-	vim.lsp.config("jdtls", { init_options = { bundles = { java_debug_bundle } } })
-else
-	vim.schedule(function()
-		vim.notify("java-debug-adapter not found, Java debugging disabled", vim.log.levels.WARN)
-	end)
-end
-
--- `:Neotest attach` when opening a java file
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "java",
-	callback = function()
-		require("neotest").run.attach()
-
-		-- Registers `dap.adapters.java`. The `java-debug-adapter` mason package ships an
-		-- OSGi *bundle* with no `Main-Class`, so `java -jar` on it always exits 1. The only
-		-- supported way to run it is inside jdtls, which is asked to start a debug server
-		-- via `vscode.java.startDebugSession` and hands back the port to connect to.
-		-- This needs the `init_options.bundles` set above, otherwise jdtls never
-		-- advertises that command.
-		local dap = require("dap")
-		dap.adapters.java = function(callback)
-			local client = vim.lsp
-				.get_clients({ bufnr = 0, name = "jdtls" })[1]
-				or vim.lsp.get_clients({ name = "jdtls" })[1]
-
-			if not client then
-				vim.notify("java: no running jdtls to start a debug session", vim.log.levels.ERROR)
-				return
-			end
-
-			client:request("workspace/executeCommand", {
-				command = "vscode.java.startDebugSession",
-			}, function(err, port)
-				if err or not port then
-					vim.notify(
-						"java: vscode.java.startDebugSession failed (is java-debug-adapter installed?)",
-						vim.log.levels.ERROR
-					)
-					return
-				end
-
-				callback({ type = "server", host = "127.0.0.1", port = port })
-			end)
-		end
-	end,
-})
-
 return {
 	{
 		"rcasia/neotest-java",
