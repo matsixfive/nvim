@@ -15,6 +15,7 @@ return {
 			svg = { icon = "", color = "#FFB13B", name = "svg" },
 			pdf = { icon = "", color = "#BD2C40", name = "pdf" },
 			oil = { icon = "", color = "#ffffff", name = "oil" },
+			lean = { icon = "∀", color = "#dddddd", name = "lean" },
 		},
 		override_by_extension = {
 			["oil"] = {
