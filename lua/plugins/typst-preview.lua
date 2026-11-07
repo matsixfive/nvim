@@ -16,6 +16,7 @@ return {
 	commands = { "TypstPreviewToggle", "TypstPreviewStart", "TypstPreviewStop" },
 	opts = {
 		debug = true,
+		extra_args = { "--input=preview=true" },
 		dependencies_bin = {
 			dependencies_bin = {
 				["tinymist"] = vim.uv.os_homedir() .. "/.local/share/nvim/mason/bin/tinymist",
